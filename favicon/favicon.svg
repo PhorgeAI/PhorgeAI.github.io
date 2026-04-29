@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><metadata><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"><rdf:Description><dc:creator>RealFaviconGenerator</dc:creator><dc:source>https://realfavicongenerator.net</dc:source></rdf:Description></rdf:RDF></metadata><style>
+    #light-icon {
+      display: inline;
+    }
+    #dark-icon {
+      display: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      #light-icon {
+        display: none;
+      }
+      #dark-icon {
+        display: inline;
+      }
+    }
+  </style><g id="light-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><g><g transform="matrix(3.6099779791343276,0,0,3.6099779791343276,78.44482148658892,-5.684341886080802e-14)"><svg xmlns="http://www.w3.org/2000/svg" id="Main_Layer" data-name="Main Layer" viewBox="0 0 233.55 277.01" width="233.55" height="277.01"><defs>
+    <style>
+      .cls-1 {
+        fill: #e0bc8c;
+      }
+    </style>
+  </defs><polygon class="cls-1" points="73.02 277.01 102.24 277.01 102.24 109.53 73.02 80.26 73.02 277.01"></polygon><path class="cls-1" d="M146.09,0C145.36,0,144.58,0,143.85.05H0v127.81h.05v43.32l29.17-29.17.05-.05v-41.23h.29l-.15-.15,14.39-14.39,14.63-14.68,13.22-13.22,1.36,1.36,8.94,8.95,20.27,20.32,14.15,14.15.49.49v71.37h29.22c48.32,0,87.46-39.13,87.46-87.46S194.41,0,146.09,0Z"></path><polygon class="cls-1" points="43.8 127.86 43.8 145.75 43.8 174.92 43.8 277.01 43.85 277.01 58.44 277.01 58.44 92.17 43.85 106.76 43.8 106.81 43.8 127.86"></polygon><polygon class="cls-1" points="29.27 174.92 29.27 162.57 29.22 162.62 .05 191.78 .05 277.01 29.22 277.01 29.27 277.01 29.27 174.92"></polygon></svg></g></g></svg></g><g id="dark-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><g clip-path="url(#SvgjsClipPath1063)"><rect width="1000" height="1000" fill="#333333"></rect><g transform="matrix(2.5269845853940294,0,0,2.5269845853940294,204.91137504061223,150)"><svg xmlns="http://www.w3.org/2000/svg" id="Main_Layer" data-name="Main Layer" viewBox="0 0 233.55 277.01" width="233.55" height="277.01"><defs>
+    <style>
+      .cls-1 {
+        fill: #e0bc8c;
+      }
+    </style>
+  <clipPath id="SvgjsClipPath1063"><rect width="1000" height="1000" x="0" y="0" rx="350" ry="350"></rect></clipPath></defs><polygon class="cls-1" points="73.02 277.01 102.24 277.01 102.24 109.53 73.02 80.26 73.02 277.01"></polygon><path class="cls-1" d="M146.09,0C145.36,0,144.58,0,143.85.05H0v127.81h.05v43.32l29.17-29.17.05-.05v-41.23h.29l-.15-.15,14.39-14.39,14.63-14.68,13.22-13.22,1.36,1.36,8.94,8.95,20.27,20.32,14.15,14.15.49.49v71.37h29.22c48.32,0,87.46-39.13,87.46-87.46S194.41,0,146.09,0Z"></path><polygon class="cls-1" points="43.8 127.86 43.8 145.75 43.8 174.92 43.8 277.01 43.85 277.01 58.44 277.01 58.44 92.17 43.85 106.76 43.8 106.81 43.8 127.86"></polygon><polygon class="cls-1" points="29.27 174.92 29.27 162.57 29.22 162.62 .05 191.78 .05 277.01 29.22 277.01 29.27 277.01 29.27 174.92"></polygon></svg></g></g></svg></g></svg>

@@ -1,0 +1,154 @@
+/* ============================================================
+   footer.css — Phorge.AI Footer Styles
+   Covers: footer bottom bar, Sri Nihira Labs loader, Aadhya shine
+   ============================================================ */
+
+/* ── Footer bottom line ── */
+.footer-copy,
+.footer-copy a {
+    color: #deba8a; /* Phorge-Gold */
+}
+
+/* ── Shared link wrapper ── */
+.snl-loader-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    vertical-align: middle;
+    margin-left: 6px;
+    font-weight: 200;
+}
+
+/* ── Sri Nihira Labs loader wrapper ── */
+.snl-loader-wrapper {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+/* ── Spinning ring base ── */
+.snl-loader {
+    position: relative;
+    transform: rotateZ(45deg);
+    perspective: 1000px;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    color: #deba8a; /* Phorge-Gold */
+}
+
+.snl-loader:before,
+.snl-loader:after {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    transform: rotateX(70deg);
+    animation: 1s snl-spin linear infinite;
+}
+
+/* Gold ring */
+.snl-loader:before {
+    color: #deba8a; /* Phorge-Gold */
+}
+
+/* Red ring */
+.snl-loader:after {
+    color: #ff3333; /* Phorge-Red */
+    transform: rotateY(70deg);
+    animation-delay: .4s;
+}
+
+/* ── Loader centre text ── */
+.snl-loader-text {
+    position: absolute;
+    text-align: center;
+    font-family: "Nimbus Sans", sans-serif;
+    font-weight: 400;
+    font-size: 9px;
+    color: #deba8a !important; /* Phorge-Gold — must override .footer-copy a */
+    pointer-events: none;
+    line-height: 1.3;
+    letter-spacing: 0.05em;
+}
+
+/* ── Spin keyframes ── */
+@keyframes snl-spin {
+    0%,  100% { box-shadow:  .25em  0     0 0 currentcolor; }
+    12%        { box-shadow:  .25em  .25em 0 0 currentcolor; }
+    25%        { box-shadow:  0      .25em 0 0 currentcolor; }
+    37%        { box-shadow: -.25em  .25em 0 0 currentcolor; }
+    50%        { box-shadow: -.25em  0     0 0 currentcolor; }
+    62%        { box-shadow: -.25em -.25em 0 0 currentcolor; }
+    75%        { box-shadow:  0     -.25em 0 0 currentcolor; }
+    87%        { box-shadow:  .25em -.25em 0 0 currentcolor; }
+}
+
+/* ── Aadhya Chintala — shine animation ── */
+/*
+    Adapted from uiverse.io/neerajbaniwal
+    Colors shifted to Phorge-Gold palette:
+      base  #9a7a4a  (dark gold)
+      shine #deba8a  (Phorge-Gold highlight)
+      mid   #c49a60  (mid gold)
+*/
+.aadhya-shine {
+    display: inline;
+    color: #deba8a;
+    background: linear-gradient(
+        to right,
+        #deba8a 0%,
+        #ff3333 10%,
+        #deba8a 20%
+    );
+    background-size: 200% auto;
+    background-position: 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: aadhya-shine 3s infinite linear;
+    animation-fill-mode: forwards;
+    font-family: "Nimbus Sans", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+@keyframes aadhya-shine {
+    0%   { background-position: 0; }
+    60%  { background-position: 180px; }
+    100% { background-position: 180px; }
+}
+
+/* ── Footer brand column — scroll-triggered stagger reveal ── */
+.footer-brand-item {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+        opacity  0.65s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer-brand-reveal.in-view .footer-brand-item:nth-child(1) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0s;
+}
+.footer-brand-reveal.in-view .footer-brand-item:nth-child(2) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.18s;
+}
+.footer-brand-reveal.in-view .footer-brand-item:nth-child(3) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.34s;
+}

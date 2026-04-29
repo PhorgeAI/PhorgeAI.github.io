@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phorge - Driving Digital Transformation with AI, Cloud &amp; Automation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="worldmap.css">
+    <style>
+        /* Neutralise worldmap.css body overrides — restore values from styles.css */
+        body {
+            display: block !important;
+            height: auto !important;
+            place-items: unset !important;
+            background-color: var(--Phorge-Dgray) !important;
+            font-size: 16px !important;
+        }
+        /* Scope map font-size to the section so dots render correctly */
+        .worldmap-section .map-grid {
+            font-size: 11px;
+        }
+
+        /* ── Footer styles moved to footer.css ── */
+    </style>
+	
+	<link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+	<link rel="shortcut icon" href="favicon/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+	<meta name="apple-mobile-web-app-title" content="PHORGE.AI" />
+	<link rel="manifest" href="favicon/site.webmanifest" />
+
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="navbar">
+        <div class="container">
+            <div class="nav-inner">
+                <a href="#" class="logo">PHORGE<span>.AI</span></a>
+                <ul class="nav-links">
+					<li><a href="#services">Home</a></li>
+					<li><a href="#services">About Us</a></li>                    
+					<li><a href="#services">Services</a></li>
+                    <li><a href="#why-gold">Case Studies</a></li>
+                    <li><a href="#products">Careers</a></li>
+                    <li><a href="#testimonials">Blog</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+                <div class="nav-cta">
+					<a href="tel:+916303253662" class="btn btn-outline icon-btn">
+						<i class="fa-solid fa-phone"></i>
+					</a>
+					<a href="#" class="btn btn-primary icon-btn" id="infoPanelBtn" aria-label="Open Info Panel">
+						<i class="fa-solid fa-grip-vertical"></i>
+					</a>
+				</div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close Menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <ul class="mobile-nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#why-gold">Why Gold</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-cta">
+            <a href="#" class="btn btn-outline">Sell Gold</a>
+            <a href="#" class="btn btn-primary">Buy Gold</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <!--
+					<div class="hero-badge">
+                        <span class="dot"></span>
+                        Market Open — Trading Live
+                    </div>
+				    -->
+                    <h1 class="hero-title">
+                      Your trusted partner for AI-powered automation and cloud transformation
+                    </h1>
+                    <!--
+					<p class="hero-desc">
+                        Experience premium gold trading with competitive rates, secure storage, and expert guidance. Join thousands of investors who trust us with their precious metals portfolio.
+                    </p>
+					-->
+					<br>
+                    <div class="hero-actions" data-reveal="up">
+                        <a href="#contact" class="learn-more">
+						  <span class="circle">
+							<span class="icon arrow"></span>
+						  </span>
+						  <span class="button-text">Book your free consultation</span>
+						</a>
+						
+                    </div>
+					<!--
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">$2.5B+</div>
+                            <div class="stat-label">Assets Under Management</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">50K+</div>
+                            <div class="stat-label">Satisfied Clients</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">15+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                    </div>
+					-->
+                </div>
+                <div class="hero-visual" data-reveal="right">
+                    <!-- INSERT IMAGE HERE -->
+					
+					
+
+					  <!-- Existing animated rings -->
+					  <!-- From Uiverse.io by Nawsome --> 
+					<div class="svg-frame">
+					<svg style="--i:0;--j:0;">
+						<g id="out1">
+							<path d="M72 172C72 116.772 116.772 72 172 72C227.228 72 272 116.772 272 172C272 227.228 227.228 272 172 272C116.772 272 72 227.228 72 172ZM197.322 172C197.322 158.015 185.985 146.678 172 146.678C158.015 146.678 146.678 158.015 146.678 172C146.678 185.985 158.015 197.322 172 197.322C185.985 197.322 197.322 185.985 197.322 172Z"></path>
+							<path mask="url(#path-1-inside-1_111_3212)" stroke-miterlimit="16" stroke-width="2" stroke="#FF3333" d="M72 172C72 116.772 116.772 72 172 72C227.228 72 272 116.772 272 172C272 227.228 227.228 272 172 272C116.772 272 72 227.228 72 172ZM197.322 172C197.322 158.015 185.985 146.678 172 146.678C158.015 146.678 146.678 158.015 146.678 172C146.678 185.985 158.015 197.322 172 197.322C185.985 197.322 197.322 185.985 197.322 172Z"></path>
+						</g>
+					</svg>
+
+					<svg style="--i:1;--j:1;">
+					<g id="out2">
+					<mask fill="white" id="path-2-inside-2_111_3212">
+						<path d="M102.892 127.966C93.3733 142.905 88.9517 160.527 90.2897 178.19L94.3752 177.88C93.1041 161.1 97.3046 144.36 106.347 130.168L102.892 127.966Z"></path>
+						<path d="M93.3401 194.968C98.3049 211.971 108.646 226.908 122.814 237.541L125.273 234.264C111.814 224.163 101.99 209.973 97.2731 193.819L93.3401 194.968Z"></path>
+						<path d="M152.707 92.3592C140.33 95.3575 128.822 101.199 119.097 109.421L121.742 112.55C130.981 104.739 141.914 99.1897 153.672 96.3413L152.707 92.3592Z"></path>
+						<path d="M253.294 161.699C255.099 175.937 253.132 190.4 247.59 203.639L243.811 202.057C249.075 189.48 250.944 175.74 249.23 162.214L253.294 161.699Z"></path>
+						<path d="M172 90.0557C184.677 90.0557 197.18 92.9967 208.528 98.6474C219.875 104.298 229.757 112.505 237.396 122.621L234.126 125.09C226.869 115.479 217.481 107.683 206.701 102.315C195.921 96.9469 184.043 94.1529 172 94.1529V90.0557Z"></path>
+						<path d="M244.195 133.235C246.991 138.442 249.216 143.937 250.83 149.623L246.888 150.742C245.355 145.34 243.242 140.12 240.586 135.174L244.195 133.235Z"></path>
+						<path d="M234.238 225.304C223.932 237.338 210.358 246.126 195.159 250.604C179.961 255.082 163.79 255.058 148.606 250.534L149.775 246.607C164.201 250.905 179.563 250.928 194.001 246.674C208.44 242.42 221.335 234.071 231.126 222.639L234.238 225.304Z"></path>
+					</mask>
+					<path mask="url(#path-2-inside-2_111_3212)" fill="#FF3333" d="M102.892 127.966L105.579 123.75L101.362 121.063L98.6752 125.28L102.892 127.966ZM90.2897 178.19L85.304 178.567L85.6817 183.553L90.6674 183.175L90.2897 178.19ZM94.3752 177.88L94.7529 182.866L99.7386 182.488L99.3609 177.503L94.3752 177.88ZM106.347 130.168L110.564 132.855L113.251 128.638L109.034 125.951L106.347 130.168ZM93.3401 194.968L91.9387 190.168L87.1391 191.569L88.5405 196.369L93.3401 194.968ZM122.814 237.541L119.813 241.54L123.812 244.541L126.813 240.542L122.814 237.541ZM125.273 234.264L129.272 237.265L132.273 233.266L128.274 230.265L125.273 234.264ZM97.2731 193.819L102.073 192.418L100.671 187.618L95.8717 189.02L97.2731 193.819ZM152.707 92.3592L157.567 91.182L156.389 86.3226L151.53 87.4998L152.707 92.3592ZM119.097 109.421L115.869 105.603L112.05 108.831L115.278 112.649L119.097 109.421ZM121.742 112.55L117.924 115.778L121.152 119.596L124.97 116.368L121.742 112.55ZM153.672 96.3413L154.849 101.201L159.708 100.023L158.531 95.1641L153.672 96.3413ZM253.294 161.699L258.255 161.07L257.626 156.11L252.666 156.738L253.294 161.699ZM247.59 203.639L245.66 208.251L250.272 210.182L252.203 205.569L247.59 203.639ZM243.811 202.057L239.198 200.126L237.268 204.739L241.88 206.669L243.811 202.057ZM249.23 162.214L248.601 157.253L243.641 157.882L244.269 162.842L249.23 162.214ZM172 90.0557V85.0557H167V90.0557H172ZM208.528 98.6474L206.299 103.123L206.299 103.123L208.528 98.6474ZM237.396 122.621L240.409 126.611L244.399 123.598L241.386 119.608L237.396 122.621ZM234.126 125.09L230.136 128.103L233.149 132.093L237.139 129.08L234.126 125.09ZM206.701 102.315L204.473 106.791L204.473 106.791L206.701 102.315ZM172 94.1529H167V99.1529H172V94.1529ZM244.195 133.235L248.601 130.87L246.235 126.465L241.83 128.83L244.195 133.235ZM250.83 149.623L252.195 154.433L257.005 153.067L255.64 148.257L250.83 149.623ZM246.888 150.742L242.078 152.107L243.444 156.917L248.254 155.552L246.888 150.742ZM240.586 135.174L238.22 130.768L233.815 133.134L236.181 137.539L240.586 135.174ZM234.238 225.304L238.036 228.556L241.288 224.759L237.491 221.506L234.238 225.304ZM195.159 250.604L196.572 255.4L196.572 255.4L195.159 250.604ZM148.606 250.534L143.814 249.107L142.386 253.899L147.178 255.326L148.606 250.534ZM149.775 246.607L151.203 241.816L146.411 240.388L144.983 245.18L149.775 246.607ZM194.001 246.674L195.415 251.47L195.415 251.47L194.001 246.674ZM231.126 222.639L234.379 218.841L230.581 215.589L227.329 219.386L231.126 222.639ZM98.6752 125.28C88.5757 141.13 83.8844 159.826 85.304 178.567L95.2754 177.812C94.0191 161.227 98.1709 144.681 107.109 130.653L98.6752 125.28ZM90.6674 183.175L94.7529 182.866L93.9976 172.895L89.912 173.204L90.6674 183.175ZM99.3609 177.503C98.1715 161.8 102.102 146.135 110.564 132.855L102.131 127.481C92.5071 142.585 88.0368 160.4 89.3895 178.258L99.3609 177.503ZM109.034 125.951L105.579 123.75L100.205 132.183L103.661 134.385L109.034 125.951ZM88.5405 196.369C93.8083 214.41 104.78 230.259 119.813 241.54L125.815 233.542C112.512 223.558 102.802 209.532 98.1397 193.566L88.5405 196.369ZM126.813 240.542L129.272 237.265L121.274 231.263L118.815 234.54L126.813 240.542ZM128.274 230.265C115.679 220.813 106.486 207.534 102.073 192.418L92.4735 195.221C97.493 212.412 107.948 227.513 122.272 238.263L128.274 230.265ZM95.8717 189.02L91.9387 190.168L94.7415 199.767L98.6745 198.619L95.8717 189.02ZM151.53 87.4998C138.398 90.681 126.188 96.8793 115.869 105.603L122.325 113.239C131.457 105.519 142.262 100.034 153.884 97.2187L151.53 87.4998ZM115.278 112.649L117.924 115.778L125.56 109.322L122.915 106.193L115.278 112.649ZM124.97 116.368C133.616 109.059 143.846 103.866 154.849 101.201L152.495 91.4818C139.981 94.5132 128.347 100.419 118.514 108.732L124.97 116.368ZM158.531 95.1641L157.567 91.182L147.848 93.5364L148.812 97.5185L158.531 95.1641ZM248.334 162.327C250.028 175.697 248.181 189.277 242.978 201.708L252.203 205.569C258.082 191.522 260.169 176.177 258.255 161.07L248.334 162.327ZM249.521 199.027L245.741 197.445L241.88 206.669L245.66 208.251L249.521 199.027ZM248.423 203.987C254.025 190.602 256.014 175.98 254.19 161.585L244.269 162.842C245.873 175.5 244.125 188.357 239.198 200.126L248.423 203.987ZM249.858 167.174L253.923 166.659L252.666 156.738L248.601 157.253L249.858 167.174ZM172 95.0557C183.903 95.0557 195.644 97.8172 206.299 103.123L210.757 94.1717C198.717 88.1761 185.45 85.0557 172 85.0557V95.0557ZM206.299 103.123C216.954 108.429 226.233 116.135 233.406 125.634L241.386 119.608C233.281 108.874 222.796 100.167 210.757 94.1717L206.299 103.123ZM234.383 118.631L231.113 121.1L237.139 129.08L240.409 126.611L234.383 118.631ZM238.116 122.077C230.393 111.849 220.403 103.552 208.93 97.8393L204.473 106.791C214.56 111.814 223.345 119.11 230.136 128.103L238.116 122.077ZM208.93 97.8393C197.458 92.1263 184.816 89.1529 172 89.1529V99.1529C183.269 99.1529 194.385 101.767 204.473 106.791L208.93 97.8393ZM177 94.1529V90.0557H167V94.1529H177ZM239.79 135.601C242.416 140.49 244.504 145.649 246.02 150.988L255.64 148.257C253.927 142.225 251.567 136.395 248.601 130.87L239.79 135.601ZM249.464 144.813L245.523 145.932L248.254 155.552L252.195 154.433L249.464 144.813ZM251.698 149.376C250.067 143.628 247.818 138.073 244.991 132.808L236.181 137.539C238.666 142.168 240.644 147.052 242.078 152.107L251.698 149.376ZM242.951 139.579L246.561 137.64L241.83 128.83L238.22 130.768L242.951 139.579ZM230.441 222.051C220.763 233.351 208.017 241.603 193.746 245.808L196.572 255.4C212.698 250.649 227.101 241.325 238.036 228.556L230.441 222.051ZM193.746 245.808C179.475 250.012 164.291 249.99 150.033 245.742L147.178 255.326C163.289 260.125 180.447 260.151 196.572 255.4L193.746 245.808ZM153.397 251.962L154.567 248.035L144.983 245.18L143.814 249.107L153.397 251.962ZM148.348 251.399C163.7 255.973 180.049 255.997 195.415 251.47L192.588 241.877C179.077 245.858 164.702 245.837 151.203 241.816L148.348 251.399ZM195.415 251.47C210.78 246.942 224.504 238.058 234.924 225.891L227.329 219.386C218.167 230.084 206.099 237.897 192.588 241.877L195.415 251.47ZM227.874 226.436L230.986 229.101L237.491 221.506L234.379 218.841L227.874 226.436Z"></path>
+				</g>
+						</svg>
+
+				<svg style="--i:0;--j:2;">
+				<g id="inner3">
+						<path d="M195.136 135.689C188.115 131.215 179.948 128.873 171.624 128.946C163.299 129.019 155.174 131.503 148.232 136.099L148.42 136.382C155.307 131.823 163.368 129.358 171.627 129.286C179.886 129.213 187.988 131.537 194.954 135.975L195.136 135.689Z"></path>
+						<path d="M195.136 208.311C188.115 212.784 179.948 215.127 171.624 215.054C163.299 214.981 155.174 212.496 148.232 207.901L148.42 207.618C155.307 212.177 163.368 214.642 171.627 214.714C179.886 214.786 187.988 212.463 194.954 208.025L195.136 208.311Z"></path>
+						<path mask="url(#path-5-inside-3_111_3212)" fill="#FF3333" d="M195.136 135.689L195.474 135.904L195.689 135.566L195.351 135.352L195.136 135.689ZM171.624 128.946L171.627 129.346L171.624 128.946ZM148.232 136.099L148.011 135.765L147.678 135.986L147.899 136.32L148.232 136.099ZM148.42 136.382L148.086 136.603L148.307 136.936L148.641 136.716L148.42 136.382ZM171.627 129.286L171.63 129.686L171.627 129.286ZM194.954 135.975L194.739 136.313L195.076 136.528L195.291 136.19L194.954 135.975ZM195.136 208.311L195.351 208.648L195.689 208.433L195.474 208.096L195.136 208.311ZM171.624 215.054L171.627 214.654L171.624 215.054ZM148.232 207.901L147.899 207.68L147.678 208.014L148.011 208.234L148.232 207.901ZM148.42 207.618L148.641 207.284L148.307 207.063L148.086 207.397L148.42 207.618ZM171.627 214.714L171.63 214.314L171.627 214.714ZM194.954 208.025L195.291 207.81L195.076 207.472L194.739 207.687L194.954 208.025ZM195.351 135.352C188.265 130.836 180.022 128.473 171.62 128.546L171.627 129.346C179.874 129.274 187.966 131.594 194.921 136.026L195.351 135.352ZM171.62 128.546C163.218 128.619 155.018 131.127 148.011 135.765L148.453 136.432C155.33 131.88 163.38 129.418 171.627 129.346L171.62 128.546ZM147.899 136.32L148.086 136.603L148.753 136.161L148.566 135.878L147.899 136.32ZM148.641 136.716C155.463 132.199 163.448 129.757 171.63 129.686L171.623 128.886C163.287 128.958 155.15 131.447 148.199 136.049L148.641 136.716ZM171.63 129.686C179.812 129.614 187.839 131.916 194.739 136.313L195.169 135.638C188.138 131.158 179.959 128.813 171.623 128.886L171.63 129.686ZM195.291 136.19L195.474 135.904L194.799 135.474L194.617 135.76L195.291 136.19ZM194.921 207.974C187.966 212.406 179.874 214.726 171.627 214.654L171.62 215.454C180.022 215.527 188.265 213.163 195.351 208.648L194.921 207.974ZM171.627 214.654C163.38 214.582 155.33 212.12 148.453 207.567L148.011 208.234C155.018 212.873 163.218 215.38 171.62 215.454L171.627 214.654ZM148.566 208.122L148.753 207.838L148.086 207.397L147.899 207.68L148.566 208.122ZM148.199 207.951C155.15 212.553 163.287 215.041 171.623 215.114L171.63 214.314C163.448 214.243 155.463 211.801 148.641 207.284L148.199 207.951ZM171.623 215.114C179.959 215.187 188.138 212.842 195.169 208.362L194.739 207.687C187.839 212.084 179.812 214.386 171.63 214.314L171.623 215.114ZM194.617 208.239L194.799 208.526L195.474 208.096L195.291 207.81L194.617 208.239Z"></path>
+					</g>
+					<path stroke="#FF3333" d="M240.944 172C240.944 187.951 235.414 203.408 225.295 215.738C215.176 228.068 201.095 236.508 185.45 239.62C169.806 242.732 153.567 240.323 139.5 232.804C125.433 225.285 114.408 213.12 108.304 198.384C102.2 183.648 101.394 167.25 106.024 151.987C110.654 136.723 120.434 123.537 133.696 114.675C146.959 105.813 162.884 101.824 178.758 103.388C194.632 104.951 209.472 111.97 220.751 123.249" id="out3"></path>
+				</svg>
+
+				<svg style="--i:1;--j:3;">
+					<g id="inner1">
+						<path fill="#FF3333" d="M145.949 124.51L148.554 129.259C156.575 124.859 165.672 122.804 174.806 123.331C183.94 123.858 192.741 126.944 200.203 132.236C207.665 137.529 213.488 144.815 217.004 153.261C220.521 161.707 221.59 170.972 220.09 179.997L224.108 180.665L224.102 180.699L229.537 181.607C230.521 175.715 230.594 169.708 229.753 163.795L225.628 164.381C224.987 159.867 223.775 155.429 222.005 151.179C218.097 141.795 211.628 133.699 203.337 127.818C195.045 121.937 185.266 118.508 175.118 117.923C165.302 117.357 155.525 119.474 146.83 124.037C146.535 124.192 146.241 124.349 145.949 124.51ZM224.638 164.522C224.009 160.091 222.819 155.735 221.082 151.563C217.246 142.352 210.897 134.406 202.758 128.634C194.62 122.862 185.021 119.496 175.06 118.922C165.432 118.367 155.841 120.441 147.311 124.914L148.954 127.91C156.922 123.745 165.876 121.814 174.864 122.333C184.185 122.87 193.166 126.019 200.782 131.421C208.397 136.822 214.339 144.257 217.928 152.877C221.388 161.188 222.526 170.276 221.23 179.173L224.262 179.677C224.998 174.671 225.35 169.535 224.638 164.522Z" clip-rule="evenodd" fill-rule="evenodd"></path>
+						<path fill="#FF3333" d="M139.91 220.713C134.922 217.428 130.469 213.395 126.705 208.758L130.983 205.286L130.985 205.288L134.148 202.721C141.342 211.584 151.417 217.642 162.619 219.839C173.821 222.036 185.438 220.232 195.446 214.742L198.051 219.491C197.759 219.651 197.465 219.809 197.17 219.963C186.252 225.693 173.696 227.531 161.577 225.154C154.613 223.789 148.041 221.08 142.202 217.234L139.91 220.713ZM142.752 216.399C148.483 220.174 154.934 222.833 161.769 224.173C173.658 226.504 185.977 224.704 196.689 219.087L195.046 216.09C185.035 221.323 173.531 222.998 162.427 220.82C151.323 218.643 141.303 212.747 134.01 204.122L131.182 206.5C134.451 210.376 138.515 213.607 142.752 216.399Z" clip-rule="evenodd" fill-rule="evenodd"></path>
+					</g>
+				</svg>
+
+				<svg style="--i:2;--j:4;">
+					<path fill="#FF3333" d="M180.956 186.056C183.849 184.212 186.103 181.521 187.41 178.349C188.717 175.177 189.013 171.679 188.258 168.332C187.503 164.986 185.734 161.954 183.192 159.65C180.649 157.346 177.458 155.883 174.054 155.46C170.649 155.038 167.197 155.676 164.169 157.288C161.14 158.9 158.683 161.407 157.133 164.468C155.582 167.528 155.014 170.992 155.505 174.388C155.997 177.783 157.524 180.944 159.879 183.439L161.129 182.259C159.018 180.021 157.648 177.186 157.207 174.141C156.766 171.096 157.276 167.989 158.667 165.245C160.057 162.5 162.261 160.252 164.977 158.806C167.693 157.36 170.788 156.788 173.842 157.167C176.895 157.546 179.757 158.858 182.037 160.924C184.317 162.99 185.904 165.709 186.581 168.711C187.258 171.712 186.992 174.849 185.82 177.694C184.648 180.539 182.627 182.952 180.032 184.606L180.956 186.056Z" id="center1"></path>
+					<path fill="#FF3333" d="M172 166.445C175.068 166.445 177.556 168.932 177.556 172C177.556 175.068 175.068 177.556 172 177.556C168.932 177.556 166.444 175.068 166.444 172C166.444 168.932 168.932 166.445 172 166.445ZM172 177.021C174.773 177.021 177.021 174.773 177.021 172C177.021 169.227 174.773 166.979 172 166.979C169.227 166.979 166.979 169.227 166.979 172C166.979 174.773 169.227 177.021 172 177.021Z" id="center"></path>
+				</svg>
+
+				<!-- Logo in its own SVG — shares the ring coordinate space via viewBox.
+				     style="--i:2;--j:5" makes it travel with the outermost ring on hover. -->
+				<svg id="phorge-logo-svg" viewBox="0 0 344 344" style="--i:0;--j:5;" xmlns="http://www.w3.org/2000/svg">
+					<g transform="translate(172,172) scale(0.075) translate(-116,-138)">
+						<polygon fill="#DEBA8A" points="73.02 277.01 102.24 277.01 102.24 109.53 73.02 80.26 73.02 277.01"/>
+						<path fill="#DEBA8A" d="M146.09,0C145.36,0,144.58,0,143.85.05H0v127.81h.05v43.32l29.17-29.17.05-.05v-41.23h.29l-.15-.15,14.39-14.39,14.63-14.68,13.22-13.22,1.36,1.36,8.94,8.95,20.27,20.32,14.15,14.15.49.49v71.37h29.22c48.32,0,87.46-39.13,87.46-87.46S194.41,0,146.09,0Z"/>
+						<polygon fill="#DEBA8A" points="43.8 127.86 43.8 145.75 43.8 174.92 43.8 277.01 43.85 277.01 58.44 277.01 58.44 92.17 43.85 106.76 43.8 106.81 43.8 127.86"/>
+						<polygon fill="#DEBA8A" points="29.27 174.92 29.27 162.57 29.22 162.62 .05 191.78 .05 277.01 29.22 277.01 29.27 277.01 29.27 174.92"/>
+					</g>
+				</svg>
+
+				</div>
+					
+					
+					<!--
+					<div class="price-card">
+                        
+						<div class="price-header">
+                            <span class="price-label">Gold Spot Price (XAU/USD)</span>
+                            <span class="price-live">Live</span>
+                        </div>
+                        <div class="price-main">
+                            <div class="price-value">
+                                <span class="currency">$</span>6,241<span style="font-size: 36px;">.50</span>
+                            </div>
+                            <span class="price-change">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                    <path d="M6 2L10 8H2L6 2Z" fill="currentColor"/>
+                                </svg>
+                                +12.82% (+$684.25)
+                            </span>
+                        </div>
+                        <div class="price-metals">
+                            <div class="metal-item">
+                                <div class="metal-name">Silver (XAG)</div>
+                                <div class="metal-price">$31.42</div>
+                                <div class="metal-change">+1.28%</div>
+                            </div>
+                            <div class="metal-item">
+                                <div class="metal-name">Platinum (XPT)</div>
+                                <div class="metal-price">$1,024.80</div>
+                                <div class="metal-change down">-0.45%</div>
+                            </div>
+                            <div class="metal-item">
+                                <div class="metal-name">Palladium (XPD)</div>
+                                <div class="metal-price">$986.50</div>
+                                <div class="metal-change">+0.82%</div>
+                            </div>
+                            <div class="metal-item">
+                                <div class="metal-name">Gold/Silver Ratio</div>
+                                <div class="metal-price">136.4</div>
+                                <div class="metal-change">+1.05%</div>
+                            </div>
+                        </div>
+						
+                    </div>
+					-->
+                </div>
+            </div>
+        </div>
+			
+    </section>
+	
+	<section class="premium-services">
+	  <div class="container">
+		<div class="premium-grid">
+
+		  <!-- Card 1 -->
+		  <div class="premium-card" data-reveal="up">
+			<div class="card-icon">
+			  <i class="fa-solid fa-briefcase"></i>
+			</div>
+			<h3>Expert Consulting</h3>
+			<p>Trusted guidance that blends strategy, technology, and innovation for real business impact.</p>
+			<div class="card-glow"></div>
+		  </div>
+
+		  <!-- Card 2 -->
+		  <div class="premium-card">
+			<div class="card-icon">
+			  <i class="fa-solid fa-rocket"></i>
+			</div>
+			<h3>Future-Ready Solutions</h3>
+			<p>AI, cloud, and automation solutions designed to help you stay ahead of change.</p>
+			<div class="card-glow"></div>
+		  </div>
+
+		  <!-- Card 3 -->
+		  <div class="premium-card">
+			<div class="card-icon">
+			  <i class="fa-solid fa-chart-line"></i>
+			</div>
+			<h3>Data-Driven Insights</h3>
+			<p>Turning complex data into actionable strategies that fuel smarter decisions.</p>
+			<div class="card-glow"></div>
+		  </div>
+
+		</div>
+	  </div>
+	</section>
+
+	<!-- Innovation Section -->
+	<section class="innovation-section">
+	  <div class="innovation-bg"></div>
+
+	  <div class="container">
+		<div class="innovation-grid">
+
+		  <!-- LEFT: Text -->
+		  <div class="innovation-content">
+			<h2 class="innovation-title" data-reveal="left">
+			  Driving Innovation,<br>
+			  Automation, and Growth
+			</h2>
+
+			<p class="innovation-text" data-reveal="up">
+			  At <strong>PHORGE.AI</strong>, we specialize in building intelligent digital solutions that help businesses embrace the future. 
+			  From <span class="highlight">AI-powered automation</span> to <span class="highlight">cloud transformation</span> and 
+			  <span class="highlight">data-driven insights</span>, we empower organizations to work smarter, scale faster, 
+			  and deliver more value to their customers.
+			</p>
+
+			<p class="innovation-text" data-reveal="up">
+			  Our team combines deep industry expertise with cutting-edge technology to deliver solutions that are 
+			  <span class="highlight">efficient, secure, and future-ready</span>. Whether you're modernizing infrastructure 
+			  or unlocking data potential, we help you move forward with confidence.
+			</p>
+		  </div>
+
+		  <!-- RIGHT: Brain + Chip Animation -->
+		  <div class="innovation-visual">
+			<!--
+			  viewBox: 700 × 420
+			  Brain: Brain2.svg paths, scaled 0.621 → ~360px wide, centered at (350,210)
+			  Chip: 86×78 centered at (350,210) — x:307 y:171
+			  Left pin col x=298, Right pin col x=393
+			  All traces fully within x:20–680, no clipping
+			-->
+			<svg class="inno-svg" viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg"
+			     width="100%" style="overflow:visible">
+			  <defs>
+				<linearGradient id="innoChipGrad" x1="0" y1="0" x2="0" y2="1">
+				  <stop offset="0%" stop-color="#2a1f0f"/>
+				  <stop offset="100%" stop-color="#0F0E0C"/>
+				</linearGradient>
+				<radialGradient id="innoBrainGlow" cx="50%" cy="50%" r="50%">
+				  <stop offset="0%" stop-color="#DEBA8A" stop-opacity="0.12"/>
+				  <stop offset="100%" stop-color="#DEBA8A" stop-opacity="0"/>
+				</radialGradient>
+				<!-- ClipPath uses exact Brain2.svg shape, scaled + centered -->
+				<clipPath id="innoBrainClip">
+				  <g transform="translate(130,91) scale(0.621) rotate(90,514.88035,259.32019)">
+				    <path d="M 471.26,616.44 C 448.4,609.76 435.2,585.58 441.9,562.57 l -12.36,-3.63 c -4.19,14.46 -2.58,29.69 4.63,42.92 7.21,13.22 19.13,22.82 33.48,27.03 5.22,1.56 10.5,2.27 15.78,2.27 15.2,0 29.94,-6.22 40.7,-17.83 l -9.34,-8.88 c -11.21,11.99 -27.89,16.59 -43.53,11.99 z"/>
+				    <path d="m 510.15,130.5 c -35.22,0 -64.84,22.43 -72.63,54.13 -42.11,0.46 -76.24,35.07 -76.24,77.6 v 1.62 C 338.29,282 324.64,310 324.64,339.44 c 0,8.56 2.25,19.71 4.51,28.07 -28.2,27.29 -32.32,72.35 -9.08,104.5 2.77,3.82 5.92,7.26 9.27,10.44 -3.16,10.05 -4.7,19.64 -4.7,30.47 0,30.66 14.55,59.38 39.02,77.47 3.8,45.57 39.34,82.27 84.54,87.26 14.04,20.62 36.96,32.87 61.94,32.87 34.45,0 64.39,-23.47 72.76,-56.66 1.61,-5.06 2.45,-10.31 2.45,-15.56 V 205.89 c 0,-0.97 -0.07,-1.88 -0.13,-2.72 -1.54,-40.78 -34.57,-72.67 -75.07,-72.67 z m 62.33,507.79 c 0,3.95 -0.65,7.84 -1.93,11.99 -7.02,27.81 -31.87,47.26 -60.4,47.26 -21.57,0 -41.34,-11.02 -52.86,-29.5 l -1.67,-2.79 -3.28,-0.26 C 411.07,661.88 378.42,628.1 376.3,586.55 l -0.13,-3.24 -2.64,-1.81 c -22.54,-15.49 -35.99,-41.17 -35.99,-68.59 0,-8.82 1.16,-15.88 2.64,-21.65 13.2,8.88 28.53,13.48 43.91,13.48 13.78,0 27.62,-3.63 39.99,-10.95 3.41,3.43 7.15,6.55 11.33,9.14 9.53,5.83 20.15,8.69 30.84,8.69 10.69,0 21.44,-2.92 31.04,-8.88 l -6.76,-11.02 c -14.87,9.27 -33.48,9.27 -48.42,0.13 -10.56,-6.48 -17.97,-16.73 -20.86,-28.85 -2.9,-12.06 -0.96,-24.57 5.47,-35.2 l -11.01,-6.74 c -8.24,13.55 -10.69,29.56 -6.95,45.05 1.48,6.22 3.99,12.06 7.27,17.37 -24.02,13.29 -54.02,10.44 -75.14,-7.84 -3.86,-3.31 -7.34,-7.07 -10.37,-11.28 -20.22,-27.88 -15.78,-67.35 10.11,-89.85 l 3.16,-2.79 -1.22,-4.02 c -2.38,-8.04 -5.02,-20.29 -5.02,-28.26 0,-26.51 12.75,-51.6 34.12,-67.23 l 2.9,-2.07 -0.26,-3.63 c -0.13,-1.43 -0.13,-2.79 -0.13,-4.28 0,-35.65 28.78,-64.7 64.2,-64.7 1.35,0 2.71,0.07 3.99,0.13 30.91,1.94 55.89,25.8 59.75,56.4 -15.84,8.75 -27.3,22.88 -33.23,39.02 -18.29,-0.13 -35.67,6.48 -49.32,18.93 -14.55,13.16 -23.12,31.31 -24.15,50.95 l 12.88,0.71 c 0.84,-16.27 7.86,-31.18 19.83,-42.07 10.43,-9.4 23.51,-14.78 37.28,-15.49 -2.25,13.03 -1.1,26.9 4.12,40 l 11.98,-4.8 c -11.85,-29.82 1.35,-63.92 30.2,-77.66 l 3.93,-1.88 -0.26,-4.34 c -2.25,-36.5 -29.49,-66.19 -64.71,-71.83 7.21,-24.44 31.55,-42.14 59.5,-42.14 33.55,0 60.91,26.45 62.27,60.35 0,0.71 0.07,1.36 0.07,2.07 v 432.41 z"/>
+				  </g>
+				</clipPath>
+			  </defs>
+
+			  <!-- ── LEFT TRACES (x: 20 → 298, pins at x=298) ── -->
+			  <path d="M 20,88  H 110 V 182 H 298" class="inno-tb"/>
+			  <path d="M 20,88  H 110 V 182 H 298" class="inno-tf inno-gold"   style="animation-delay:0s;   animation-duration:3.2s"/>
+
+			  <path d="M 20,155 H 100 V 198 H 298" class="inno-tb"/>
+			  <path d="M 20,155 H 100 V 198 H 298" class="inno-tf inno-orange" style="animation-delay:0.8s; animation-duration:3.6s"/>
+
+			  <path d="M 20,210 H 298"              class="inno-tb"/>
+			  <path d="M 20,210 H 298"              class="inno-tf inno-cream" style="animation-delay:1.4s; animation-duration:3.0s"/>
+
+			  <path d="M 20,268 H 100 V 224 H 298" class="inno-tb"/>
+			  <path d="M 20,268 H 100 V 224 H 298" class="inno-tf inno-gold"   style="animation-delay:0.4s; animation-duration:3.4s"/>
+
+			  <path d="M 20,335 H 110 V 240 H 298" class="inno-tb"/>
+			  <path d="M 20,335 H 110 V 240 H 298" class="inno-tf inno-orange" style="animation-delay:1.1s; animation-duration:3.8s"/>
+
+			  <!-- ── RIGHT TRACES (x: 393 → 680, pins at x=393) ── -->
+			  <path d="M 680,84  H 590 V 182 H 393" class="inno-tb"/>
+			  <path d="M 680,84  H 590 V 182 H 393" class="inno-tf inno-cream" style="animation-delay:0.3s; animation-duration:3.5s"/>
+
+			  <path d="M 680,150 H 600 V 198 H 393" class="inno-tb"/>
+			  <path d="M 680,150 H 600 V 198 H 393" class="inno-tf inno-gold"  style="animation-delay:1.0s; animation-duration:3.1s"/>
+
+			  <path d="M 680,210 H 393"              class="inno-tb"/>
+			  <path d="M 680,210 H 393"              class="inno-tf inno-orange" style="animation-delay:0.2s; animation-duration:3.7s"/>
+
+			  <path d="M 680,272 H 600 V 224 H 393" class="inno-tb"/>
+			  <path d="M 680,272 H 600 V 224 H 393" class="inno-tf inno-cream" style="animation-delay:0.7s; animation-duration:3.3s"/>
+
+			  <path d="M 680,338 H 590 V 240 H 393" class="inno-tb"/>
+			  <path d="M 680,338 H 590 V 240 H 393" class="inno-tf inno-gold"  style="animation-delay:1.3s; animation-duration:3.9s"/>
+
+			  <!-- ── GLOW HALO ── -->
+			  <ellipse cx="350" cy="210" rx="185" ry="95" fill="url(#innoBrainGlow)"/>
+
+			  <!-- ── BRAIN SILHOUETTE — exact Brain2.svg paths, same scale/center ── -->
+			  <g transform="translate(130,91) scale(0.621) rotate(90,514.88035,259.32019)"
+			     fill="#1c1408" fill-opacity="0.92" stroke="#DEBA8A" stroke-width="2.2">
+			    <path d="M 471.26,616.44 C 448.4,609.76 435.2,585.58 441.9,562.57 l -12.36,-3.63 c -4.19,14.46 -2.58,29.69 4.63,42.92 7.21,13.22 19.13,22.82 33.48,27.03 5.22,1.56 10.5,2.27 15.78,2.27 15.2,0 29.94,-6.22 40.7,-17.83 l -9.34,-8.88 c -11.21,11.99 -27.89,16.59 -43.53,11.99 z"/>
+			    <path d="m 510.15,130.5 c -35.22,0 -64.84,22.43 -72.63,54.13 -42.11,0.46 -76.24,35.07 -76.24,77.6 v 1.62 C 338.29,282 324.64,310 324.64,339.44 c 0,8.56 2.25,19.71 4.51,28.07 -28.2,27.29 -32.32,72.35 -9.08,104.5 2.77,3.82 5.92,7.26 9.27,10.44 -3.16,10.05 -4.7,19.64 -4.7,30.47 0,30.66 14.55,59.38 39.02,77.47 3.8,45.57 39.34,82.27 84.54,87.26 14.04,20.62 36.96,32.87 61.94,32.87 34.45,0 64.39,-23.47 72.76,-56.66 1.61,-5.06 2.45,-10.31 2.45,-15.56 V 205.89 c 0,-0.97 -0.07,-1.88 -0.13,-2.72 -1.54,-40.78 -34.57,-72.67 -75.07,-72.67 z m 62.33,507.79 c 0,3.95 -0.65,7.84 -1.93,11.99 -7.02,27.81 -31.87,47.26 -60.4,47.26 -21.57,0 -41.34,-11.02 -52.86,-29.5 l -1.67,-2.79 -3.28,-0.26 C 411.07,661.88 378.42,628.1 376.3,586.55 l -0.13,-3.24 -2.64,-1.81 c -22.54,-15.49 -35.99,-41.17 -35.99,-68.59 0,-8.82 1.16,-15.88 2.64,-21.65 13.2,8.88 28.53,13.48 43.91,13.48 13.78,0 27.62,-3.63 39.99,-10.95 3.41,3.43 7.15,6.55 11.33,9.14 9.53,5.83 20.15,8.69 30.84,8.69 10.69,0 21.44,-2.92 31.04,-8.88 l -6.76,-11.02 c -14.87,9.27 -33.48,9.27 -48.42,0.13 -10.56,-6.48 -17.97,-16.73 -20.86,-28.85 -2.9,-12.06 -0.96,-24.57 5.47,-35.2 l -11.01,-6.74 c -8.24,13.55 -10.69,29.56 -6.95,45.05 1.48,6.22 3.99,12.06 7.27,17.37 -24.02,13.29 -54.02,10.44 -75.14,-7.84 -3.86,-3.31 -7.34,-7.07 -10.37,-11.28 -20.22,-27.88 -15.78,-67.35 10.11,-89.85 l 3.16,-2.79 -1.22,-4.02 c -2.38,-8.04 -5.02,-20.29 -5.02,-28.26 0,-26.51 12.75,-51.6 34.12,-67.23 l 2.9,-2.07 -0.26,-3.63 c -0.13,-1.43 -0.13,-2.79 -0.13,-4.28 0,-35.65 28.78,-64.7 64.2,-64.7 1.35,0 2.71,0.07 3.99,0.13 30.91,1.94 55.89,25.8 59.75,56.4 -15.84,8.75 -27.3,22.88 -33.23,39.02 -18.29,-0.13 -35.67,6.48 -49.32,18.93 -14.55,13.16 -23.12,31.31 -24.15,50.95 l 12.88,0.71 c 0.84,-16.27 7.86,-31.18 19.83,-42.07 10.43,-9.4 23.51,-14.78 37.28,-15.49 -2.25,13.03 -1.1,26.9 4.12,40 l 11.98,-4.8 c -11.85,-29.82 1.35,-63.92 30.2,-77.66 l 3.93,-1.88 -0.26,-4.34 c -2.25,-36.5 -29.49,-66.19 -64.71,-71.83 7.21,-24.44 31.55,-42.14 59.5,-42.14 33.55,0 60.91,26.45 62.27,60.35 0,0.71 0.07,1.36 0.07,2.07 v 432.41 z"/>
+			  </g>
+
+			  <!-- Brain center divider -->
+			  <line x1="350" y1="122" x2="350" y2="298"
+			        stroke="#DEBA8A" stroke-width="0.7" stroke-dasharray="5,4" opacity="0.28"/>
+
+			  <!-- ── INTERNAL WIRING (clipped to brain, fan from chip pins outward) ── -->
+			  <g clip-path="url(#innoBrainClip)" opacity="0.6">
+			    <!-- Left hemisphere: from left pin column x=307 outward -->
+			    <path d="M 307,182 H 265 V 152 H 228" fill="none" stroke="#DEBA8A"   stroke-width="0.9"/>
+			    <path d="M 307,198 H 258 V 175 H 215" fill="none" stroke="#D4784A"   stroke-width="0.9"/>
+			    <path d="M 307,210 H 235"              fill="none" stroke="#E8E0D0"   stroke-width="0.85"/>
+			    <path d="M 307,224 H 258 V 248 H 222" fill="none" stroke="#DEBA8A"   stroke-width="0.9"/>
+			    <path d="M 307,240 H 265 V 264 H 232" fill="none" stroke="#D4784A"   stroke-width="0.85"/>
+			    <!-- Left terminal nodes -->
+			    <circle cx="228" cy="152" r="2.5" fill="#DEBA8A" class="inno-nb" style="animation-delay:0.0s"/>
+			    <circle cx="215" cy="175" r="2.5" fill="#D4784A" class="inno-nb" style="animation-delay:0.5s"/>
+			    <circle cx="235" cy="210" r="2.5" fill="#E8E0D0" class="inno-nb" style="animation-delay:1.1s"/>
+			    <circle cx="222" cy="248" r="2.5" fill="#DEBA8A" class="inno-nb" style="animation-delay:0.3s"/>
+			    <circle cx="232" cy="264" r="2.5" fill="#D4784A" class="inno-nb" style="animation-delay:0.8s"/>
+			    <!-- Right hemisphere: from right pin column x=393 outward -->
+			    <path d="M 393,182 H 435 V 152 H 472" fill="none" stroke="#D4784A"   stroke-width="0.9"/>
+			    <path d="M 393,198 H 442 V 175 H 485" fill="none" stroke="#DEBA8A"   stroke-width="0.9"/>
+			    <path d="M 393,210 H 465"              fill="none" stroke="#E8E0D0"   stroke-width="0.85"/>
+			    <path d="M 393,224 H 442 V 248 H 478" fill="none" stroke="#D4784A"   stroke-width="0.9"/>
+			    <path d="M 393,240 H 435 V 264 H 468" fill="none" stroke="#DEBA8A"   stroke-width="0.85"/>
+			    <!-- Right terminal nodes -->
+			    <circle cx="472" cy="152" r="2.5" fill="#D4784A" class="inno-nb" style="animation-delay:0.4s"/>
+			    <circle cx="485" cy="175" r="2.5" fill="#DEBA8A" class="inno-nb" style="animation-delay:0.9s"/>
+			    <circle cx="465" cy="210" r="2.5" fill="#E8E0D0" class="inno-nb" style="animation-delay:0.2s"/>
+			    <circle cx="478" cy="248" r="2.5" fill="#D4784A" class="inno-nb" style="animation-delay:0.6s"/>
+			    <circle cx="468" cy="264" r="2.5" fill="#DEBA8A" class="inno-nb" style="animation-delay:1.2s"/>
+			  </g>
+
+			  <!-- ── SCAN LINE ── -->
+			  <g clip-path="url(#innoBrainClip)">
+			    <rect x="170" y="188" width="360" height="2" fill="#DEBA8A" opacity="0.15" class="inno-scan"/>
+			  </g>
+
+			  <!-- ── CHIP — 86×78, centered at (350,211) ── -->
+			  <!-- Body: x=307, y=172, w=86, h=78 -->
+			  <rect x="307" y="172" width="86" height="78" rx="8"
+			        fill="url(#innoChipGrad)" stroke="#DEBA8A" stroke-width="1.3"/>
+			  <rect x="314" y="179" width="72" height="64" rx="5"
+			        fill="none" stroke="#DEBA8A" stroke-width="0.45" opacity="0.3"/>
+			  <rect x="321" y="186" width="58" height="50" rx="3.5"
+			        fill="#0F0E0C" stroke="#DEBA8A" stroke-width="0.7" opacity="0.85"/>
+
+			  <!-- Pins LEFT (x=298) -->
+			  <rect x="298" y="180" width="9" height="6" rx="1.5" fill="#2a1f0f" stroke="#DEBA8A" stroke-width="0.6"/>
+			  <rect x="298" y="192" width="9" height="6" rx="1.5" fill="#2a1f0f" stroke="#DEBA8A" stroke-width="0.6"/>
+			  <rect x="298" y="204" width="9" height="6" rx="1.5" fill="#2a1f0f" stroke="#DEBA8A" stroke-width="0.6"/>
+			  <rect x="298" y="216" width="9" height="6" rx="1.5" fill="#2a1f0f" stroke="#DEBA8A" stroke-width="0.6"/>
+			  <rect x="298" y="228" width="9" height="6" rx="1.5" fill="#2a1f0f" stroke="#DEBA8A" stroke-width="0.6"/>
+			  <rect x="298" y="236" width="9" height="6" rx="1.5" fill="#2a1f0f" stroke="#DEBA8A" stroke-width="0.6"/>
+
+			  <!-- Pins RIGHT (x=393) -->
+			  <rect x="393" y="180" width="9" height="6" rx="1.5" fill="#2a1f0f" stroke="#DEBA8A" stroke-width="0.6"/>
+			  <rect x="393" y="192" width="9" height="6" rx="1.5" fill="#2a1f0f" stroke="#DEBA8A" stroke-width="0.6"/>
+			  <rect x="393" y="204" width="9" height="6" rx="1.5" fill="#2a1f0f" stroke="#DEBA8A" stroke-width="0.6"/>
+			  <rect x="393" y="216" width="9" height="6" rx="1.5" fill="#2a1f0f" stroke="#DEBA8A" stroke-width="0.6"/>
+			  <rect x="393" y="228" width="9" height="6" rx="1.5" fill="#2a1f0f" stroke="#DEBA8A" stroke-width="0.6"/>
+			  <rect x="393" y="236" width="9" height="6" rx="1.5" fill="#2a1f0f" stroke="#DEBA8A" stroke-width="0.6"/>
+
+			  <!-- Pins TOP (y=163) -->
+			  <rect x="320" y="163" width="6" height="9" rx="1.5" fill="#2a1f0f" stroke="#DEBA8A" stroke-width="0.6"/>
+			  <rect x="333" y="163" width="6" height="9" rx="1.5" fill="#2a1f0f" stroke="#DEBA8A" stroke-width="0.6"/>
+			  <rect x="347" y="163" width="6" height="9" rx="1.5" fill="#2a1f0f" stroke="#DEBA8A" stroke-width="0.6"/>
+			  <rect x="361" y="163" width="6" height="9" rx="1.5" fill="#2a1f0f" stroke="#DEBA8A" stroke-width="0.6"/>
+			  <rect x="375" y="163" width="6" height="9" rx="1.5" fill="#2a1f0f" stroke="#DEBA8A" stroke-width="0.6"/>
+
+			  <!-- Pins BOTTOM (y=250) -->
+			  <rect x="320" y="250" width="6" height="9" rx="1.5" fill="#2a1f0f" stroke="#DEBA8A" stroke-width="0.6"/>
+			  <rect x="333" y="250" width="6" height="9" rx="1.5" fill="#2a1f0f" stroke="#DEBA8A" stroke-width="0.6"/>
+			  <rect x="347" y="250" width="6" height="9" rx="1.5" fill="#2a1f0f" stroke="#DEBA8A" stroke-width="0.6"/>
+			  <rect x="361" y="250" width="6" height="9" rx="1.5" fill="#2a1f0f" stroke="#DEBA8A" stroke-width="0.6"/>
+			  <rect x="375" y="250" width="6" height="9" rx="1.5" fill="#2a1f0f" stroke="#DEBA8A" stroke-width="0.6"/>
+
+			  <!-- Chip label: "Phorge.AI" centered at (350, 211) -->
+			  <text x="350" y="211" text-anchor="middle" dominant-baseline="middle"
+			        font-family="'Nimbus Sans', Arial, sans-serif"
+			        font-size="11" font-weight="700"
+			        fill="#DEBA8A" letter-spacing="0.5">Phorge.AI</text>
+
+			  <!-- ── ENDPOINT DOTS ── -->
+			  <!-- Left -->
+			  <circle cx="20"  cy="88"  r="4" fill="#DEBA8A" class="inno-pulse" style="animation-delay:0.0s"/>
+			  <circle cx="20"  cy="155" r="4" fill="#D4784A" class="inno-pulse" style="animation-delay:0.6s"/>
+			  <circle cx="20"  cy="210" r="4" fill="#E8E0D0" class="inno-pulse" style="animation-delay:1.2s"/>
+			  <circle cx="20"  cy="268" r="4" fill="#DEBA8A" class="inno-pulse" style="animation-delay:0.3s"/>
+			  <circle cx="20"  cy="335" r="4" fill="#D4784A" class="inno-pulse" style="animation-delay:0.9s"/>
+			  <!-- Right -->
+			  <circle cx="680" cy="84"  r="4" fill="#E8E0D0" class="inno-pulse" style="animation-delay:0.4s"/>
+			  <circle cx="680" cy="150" r="4" fill="#DEBA8A" class="inno-pulse" style="animation-delay:1.0s"/>
+			  <circle cx="680" cy="210" r="4" fill="#D4784A" class="inno-pulse" style="animation-delay:0.1s"/>
+			  <circle cx="680" cy="272" r="4" fill="#DEBA8A" class="inno-pulse" style="animation-delay:0.7s"/>
+			  <circle cx="680" cy="338" r="4" fill="#E8E0D0" class="inno-pulse" style="animation-delay:1.3s"/>
+
+			</svg>
+		  </div>
+
+		</div><!-- end .innovation-grid -->
+	  </div>
+	</section>
+	
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label" data-reveal="chars">Our Services</div>
+                <h5 class="section-title" data-reveal="up">Helping businesses innovate and grow with consulting, AI, cloud, and automation solutions.</h5>
+            </div>
+			
+			<div class="services-divider"></div>
+					
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                       <i class="fa-solid fa-magnifying-glass-chart hover-beat"></i> 
+                    </div>
+                    <h3 class="service-title">Data &amp; Analytics for Business Growth</h3>
+                    <p class="service-desc">Unlock the power of your data with intelligent analytics solutions that drive smarter decisions, uncover opportunities, and accelerate business growth.</p>
+					
+					<div class="service-card-divider"></div>
+					<p><u>Read more</u></p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                       <i class="fa-solid fa-robot hover-beat"></i> 
+                    </div>
+                    <h3 class="service-title">AI-Powered Customer Support</h3>
+                    <p class="service-desc">Deliver exceptional customer experiences with AI-driven support systems that resolve queries faster, reduce workload, and improve satisfaction—24/7.</p>
+					<div class="service-card-divider"></div>
+					<p><u>Read more</u></p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                       <i class="fa-solid fa-cloud hover-beat"></i> 
+                    </div>
+                    <h3 class="service-title">Cloud Migration &amp; Cost Optimization</h3>
+                    <p class="service-desc">Accelerate your digital transformation with seamless cloud migration and intelligent cost optimization strategies that enhance performance, scalability, and ROI.</p>
+					<div class="service-card-divider"></div>
+					
+					<p><u>Read more</u></p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                       <i class="fa-solid fa-gears hover-beat"></i> 
+                    </div>
+                    <h3 class="service-title">Automation &amp; Multi-Agent Systems</h3>
+                    <p class="service-desc">Empower your organization with intelligent automation and collaborative multi-agent systems that reduce manual effort, optimize workflows, and drive efficiency at...</p>
+					<div class="service-card-divider"></div>
+					<p><u>Read more</u></p>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+	<section class="phorge-why">
+	  <div class="container">
+		<div class="phorge-why-grid">
+
+		  <!-- LEFT CONTENT -->
+		  <div class="phorge-why-left">
+			<h2 class="phorge-why-title" data-reveal="left">Why Choose PHORGE?</h2>
+			<p class="phorge-why-text" data-reveal="up">
+			  At PHORGE, we provide expert consulting with trusted guidance that blends strategy, technology, and innovation for real business impact.
+			  Our future-ready solutions, including AI, cloud, and automation, are designed to help you stay ahead of change.
+			</p>
+			<p class="phorge-why-text" data-reveal="up">
+			  We turn complex data into actionable insights that fuel smarter decisions, and we work as your partner,
+			  focusing on growth, trust, and long-term success.
+			</p>
+		  </div>
+
+		  <!-- RIGHT CAROUSEL -->
+		  <div class="phorge-why-right" data-reveal="right">
+			<div class="phorge-carousel">
+
+			  <div class="phorge-slide active">
+				<h3>Our Vision</h3>
+				<p>
+				  To be a trusted partner for organizations worldwide, driving transformation through AI, cloud,
+				  automation, and data-driven strategies that unlock long-term success and future-ready growth.
+				</p>
+			  </div>
+
+			  <div class="phorge-slide">
+				<h3>Our Mission</h3>
+				<p>
+				  To empower businesses with intelligent consulting and technology-driven solutions, helping them innovate,
+				  optimize operations, and achieve sustainable growth in a rapidly evolving digital world.
+				</p>
+			  </div>
+
+			  <!-- Arrows -->
+			  <div class="phorge-arrows">
+				<button id="prevSlide">&#8592;</button>
+				<button id="nextSlide">&#8594;</button>
+			  </div>
+
+			</div>
+		  </div>
+
+		</div>
+	  </div>
+	</section>
+	
+	
+	
+
+    <!-- Why Gold Section 
+    <section class="why-gold" id="why-gold">
+        <div class="container">
+            <div class="why-grid">
+                <div class="why-content">
+                    <div class="section-label">Why Gold</div>
+                    <h2 class="section-title">The Timeless Standard of Wealth Preservation</h2>
+                    <ul class="why-list">
+                        <li class="why-item">
+                            <span class="why-number">01</span>
+                            <div class="why-text">
+                                <h4>Inflation Hedge</h4>
+                                <p>Gold has historically maintained its purchasing power over centuries, protecting wealth against currency devaluation and inflation.</p>
+                            </div>
+                        </li>
+                        <li class="why-item">
+                            <span class="why-number">02</span>
+                            <div class="why-text">
+                                <h4>Portfolio Diversification</h4>
+                                <p>Gold's low correlation with stocks and bonds makes it an effective tool for reducing overall portfolio risk and volatility.</p>
+                            </div>
+                        </li>
+                        <li class="why-item">
+                            <span class="why-number">03</span>
+                            <div class="why-text">
+                                <h4>Safe Haven Asset</h4>
+                                <p>During economic uncertainty and geopolitical tensions, gold serves as a reliable store of value when other assets decline.</p>
+                            </div>
+                        </li>
+                        <li class="why-item">
+                            <span class="why-number">04</span>
+                            <div class="why-text">
+                                <h4>Tangible Ownership</h4>
+                                <p>Unlike digital assets, physical gold provides true ownership without counterparty risk or dependency on electronic systems.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="why-visual">
+                    <div class="why-image-grid">
+                        <div class="why-thumb">
+                            <img src="images/tm-gold-03.jpg" alt="Gold bars stacked">
+                        </div>
+                        <div class="why-thumb">
+                            <img src="images/tm-gold-04.jpg" alt="Gold coins">
+                        </div>
+                        <div class="why-thumb">
+                            <img src="images/tm-gold-01.jpg" alt="Gold investment">
+                        </div>
+                        <div class="why-thumb">
+                            <img src="images/tm-silver-03.jpg" alt="Secure vault">
+                        </div>
+                        <div class="why-thumb">
+                            <img src="images/tm-silver-02.jpg" alt="Silver bars">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	-->
+
+    <!-- Products Section
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Our Products</div>
+                <h2 class="section-title">Premium Gold Selection</h2>
+                <p class="section-desc">Explore our curated collection of gold bars and coins from the world's most prestigious mints and refiners.</p>
+            </div>
+            <div class="products-tabs">
+                <button class="tab-btn active" data-tab="coins">Gold Coins</button>
+                <button class="tab-btn" data-tab="bars">Gold Bars</button>
+                <button class="tab-btn" data-tab="silver">Silver</button>
+                <button class="tab-btn" data-tab="platinum">Platinum</button>
+            </div>
+
+            <!-- Gold Coins Tab
+            <div class="products-tab-content active" id="tab-coins">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/tm-gold-01.jpg" alt="American Gold Eagle Coin">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">American Gold Eagle</h3>
+                        <div class="product-weight">1 oz · 22 Karat</div>
+                        <div class="product-footer">
+                            <span class="product-price">$4,425</span>
+                            <button class="product-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/tm-gold-02.jpg" alt="Canadian Maple Leaf Coin">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Canadian Maple Leaf</h3>
+                        <div class="product-weight">1 oz · 24 Karat</div>
+                        <div class="product-footer">
+                            <span class="product-price">$4,380</span>
+                            <button class="product-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/tm-gold-03.jpg" alt="South African Krugerrand">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">South African Krugerrand</h3>
+                        <div class="product-weight">1 oz · 22 Karat</div>
+                        <div class="product-footer">
+                            <span class="product-price">$4,395</span>
+                            <button class="product-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/tm-gold-04.jpg" alt="Austrian Philharmonic">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Austrian Philharmonic</h3>
+                        <div class="product-weight">1 oz · 24 Karat</div>
+                        <div class="product-footer">
+                            <span class="product-price">$4,365</span>
+                            <button class="product-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gold Bars Tab
+            <div class="products-tab-content" id="tab-bars">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/tm-gold-04.jpg" alt="PAMP Suisse Gold Bar">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">PAMP Suisse Bar</h3>
+                        <div class="product-weight">1 oz · 999.9 Fine</div>
+                        <div class="product-footer">
+                            <span class="product-price">$4,340</span>
+                            <button class="product-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/tm-gold-03.jpg" alt="Credit Suisse Gold Bar">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Credit Suisse Bar</h3>
+                        <div class="product-weight">1 oz · 999.9 Fine</div>
+                        <div class="product-footer">
+                            <span class="product-price">$4,335</span>
+                            <button class="product-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/tm-gold-02.jpg" alt="Perth Mint Gold Bar">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Perth Mint Bar</h3>
+                        <div class="product-weight">10 oz · 999.9 Fine</div>
+                        <div class="product-footer">
+                            <span class="product-price">$43,250</span>
+                            <button class="product-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/tm-gold-01.jpg" alt="Valcambi Gold Bar">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Valcambi CombiBar</h3>
+                        <div class="product-weight">50 x 1g · 999.9 Fine</div>
+                        <div class="product-footer">
+                            <span class="product-price">$4,580</span>
+                            <button class="product-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Silver Tab
+            <div class="products-tab-content" id="tab-silver">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/tm-silver-01.jpg" alt="American Silver Eagle">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">American Silver Eagle</h3>
+                        <div class="product-weight">1 oz · 99.9% Pure</div>
+                        <div class="product-footer">
+                            <span class="product-price">$38.50</span>
+                            <button class="product-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/tm-silver-02.jpg" alt="Canadian Silver Maple">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Canadian Silver Maple</h3>
+                        <div class="product-weight">1 oz · 99.99% Pure</div>
+                        <div class="product-footer">
+                            <span class="product-price">$36.80</span>
+                            <button class="product-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/tm-silver-03.jpg" alt="Silver Bar">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">PAMP Silver Bar</h3>
+                        <div class="product-weight">10 oz · 999 Fine</div>
+                        <div class="product-footer">
+                            <span class="product-price">$345.00</span>
+                            <button class="product-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/tm-silver-04.jpg" alt="Silver Britannia">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">British Britannia</h3>
+                        <div class="product-weight">1 oz · 99.9% Pure</div>
+                        <div class="product-footer">
+                            <span class="product-price">$37.25</span>
+                            <button class="product-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Platinum Tab
+            <div class="products-tab-content" id="tab-platinum">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/tm-silver-02.jpg" alt="American Platinum Eagle">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">American Platinum Eagle</h3>
+                        <div class="product-weight">1 oz · 99.95% Pure</div>
+                        <div class="product-footer">
+                            <span class="product-price">$1,085</span>
+                            <button class="product-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/tm-silver-03.jpg" alt="Canadian Platinum Maple">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Canadian Platinum Maple</h3>
+                        <div class="product-weight">1 oz · 99.95% Pure</div>
+                        <div class="product-footer">
+                            <span class="product-price">$1,065</span>
+                            <button class="product-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/tm-silver-04.jpg" alt="Platinum Bar">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">PAMP Platinum Bar</h3>
+                        <div class="product-weight">1 oz · 999.5 Fine</div>
+                        <div class="product-footer">
+                            <span class="product-price">$1,055</span>
+                            <button class="product-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/tm-silver-01.jpg" alt="Australian Platinum Koala">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Australian Platinum Koala</h3>
+                        <div class="product-weight">1 oz · 99.95% Pure</div>
+                        <div class="product-footer">
+                            <span class="product-price">$1,095</span>
+                            <button class="product-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 	-->
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label" data-reveal="chars">Testimonials</div>
+                <h2 class="section-title" data-reveal="up">What our clients say?</h2>
+            </div>
+            <div class="testimonials-wrapper">
+                <div class="testimonials-slider">
+                    <div class="testimonials-track" id="testimonialsTrack">
+                        <div class="testimonial-item">
+                            <p class="testimonial-text">"Phorge transformed our operations with their intelligent automation solutions. Their consulting team understood our challenges deeply and delivered scalable solutions that improved efficiency across the board"</p>
+                            <div class="testimonial-author">
+                                <span class="author-name">Rajesh M</span>
+                                <span class="author-title">Tech Startup CEO</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-item">
+                            <p class="testimonial-text">"Partnering with Phorge was a game-changer. Their expertise in AI and cloud consulting helped us optimize costs and streamline our workflows, driving measurable business growth."</p>
+                            <div class="testimonial-author">
+                                <span class="author-name">Priya S.</span>
+                                <span class="author-title">IT Director</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-item">
+                            <p class="testimonial-text">"The Phorge team combines strategy with cutting-edge technology. Their multi-agent automation solutions have significantly improved our decision-making and operational efficiency."</p>
+                            <div class="testimonial-author">
+                                <span class="author-name">Anil K</span>
+                                <span class="author-title">Operations Head</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-item">
+                            <p class="testimonial-text">"Phorge is more than a consulting firm—they are a trusted partner. Their data-driven insights and future-ready solutions empowered us to scale confidently in a competitive market."</p>
+                            <div class="testimonial-author">
+                                <span class="author-name">Sneha R.</span>
+                                <span class="author-title">Business Owner</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-nav">
+                    <button class="testimonial-arrow prev" id="testimonialPrev" aria-label="Previous testimonial">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M15 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+                    <button class="testimonial-arrow next" id="testimonialNext" aria-label="Next testimonial">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="testimonial-dots" id="testimonialDots">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+                <span class="dot" data-index="3"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section
+    <section class="trust">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <div class="trust-logo">BBB Accredited</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-logo">LBMA Member</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-logo">NGC Certified</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-logo">PCGS Partner</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-logo">ICA Approved</div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 	-->
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-inner">
+                
+                <p class="cta-desc" data-reveal="fade">READ OUR BLOG</p>
+				<h2 class="cta-title" data-reveal="up">Featured News and Insights</h2>
+				<div class="services-divider"></div>
+                <!-- CTA Section
+				<div class="cta-actions">
+                    <a href="#contact" class="btn btn-primary">Request Free Consultation</a>
+                    <a href="#" class="btn btn-outline">Download Investment Guide</a>
+                </div>
+				-->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="section-label" data-reveal="chars">Contact Us</div>
+                    <h3>Let's Discuss Your Investment Goals</h3>
+                    <p>Our experts are here to answer your questions and guide you through every step of your business transformation journey.</p>
+                    <ul class="contact-details" data-reveal="lines">
+                        <li>
+                            <div class="contact-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <div class="contact-label">Phone</div>
+                                <div class="contact-value">+91 (800) PHORGE</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <div class="contact-label">Email</div>
+                                <div class="contact-value">contact@Phorge.AI</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <div class="contact-label">OFFICE</div>
+                                <div class="contact-value">
+                                  <p>4th floor, Inwinex Tower, D No. 8, 2 277 <br>
+                                  &nbsp;Road No. 2, Banjara Hills, Hyderabad, 500034</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <div class="contact-label">Business Hours</div>
+                                <div class="contact-value">Mon - Fri: 9:00 AM - 6:00 PM<br>Sat: 10:00 AM - 2:00 PM</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contact-form-wrapper" data-reveal="right">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label class="form-label">First Name</label>
+                                <input type="text" class="form-input" placeholder="John" required>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" class="form-input" placeholder="Smith" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" class="form-input" placeholder="John@gmail.com" required>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label class="form-label">Phone Number</label>
+                                <input type="tel" class="form-input" placeholder="+91 99999 99999">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">I'm interested in</label>
+                            <select class="form-select" required>
+                                <option value="">Select an option</option>
+                                <option value="buy">Buying Gold</option>
+                                <option value="sell">Selling Gold</option>
+                                <option value="storage">Storage Services</option>
+                                <option value="ira">Gold IRA</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-textarea" placeholder="Tell us about your business transformation goals or questions..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary form-submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- World Map Section -->
+    <section class="worldmap-section">
+        <div class="map-grid"></div>
+        <script>
+          (function() {
+            const container = document.querySelector('.worldmap-section .map-grid');
+            for (let i = 0; i < 1925; i++) {
+              const div = document.createElement('div');
+              div.classList.add('cell');
+              container.appendChild(div);
+            }
+          })();
+        </script>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand footer-brand-reveal">
+                    <a href="#" class="logo footer-brand-item">PHORGE<span>.AI</span></a>
+					
+                    <p class="footer-brand-item">At Phorge.AI, we specialize in building intelligent digital solutions that help businesses embrace the future. From AI-powered automation to cloud transformation and data-driven insights, we deliver results.</p>
+					
+                    
+                </div>
+                <!--
+				<div class="footer-col">
+                    <h4 class="footer-title">Products</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Gold Coins</a></li>
+                        <li><a href="#">Gold Bars</a></li>
+                        <li><a href="#">Silver Products</a></li>
+                        <li><a href="#">Platinum</a></li>
+                        <li><a href="#">Palladium</a></li>
+                    </ul>
+                </div>
+				-->
+                <div class="footer-col">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Automation &amp; Multi-Agent Systems</a></li>
+                        <li><a href="#">Cloud Migration &amp; Cost Optimization</a></li>
+                        <li><a href="#">AI-Powered Customer Support</a></li>
+                        <li><a href="#">Data &amp; Analytics for Business Growth</a></li>
+                        <li><a href="#">Intelligent Multi-Agent Automation Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copy">&copy; 2026 Phorge. All rights reserved. Designed by
+                    <a href="https://www.linkedin.com/company/srinihiralabs/" target="_blank" class="snl-loader-link" aria-label="Sri Nihira Labs">
+                        <span class="snl-loader-wrapper">
+                            <span class="snl-loader"></span>
+                            <span class="snl-loader-text">SRI NIHIRA<br>L A B S</span>
+                        </span>
+                    </a>
+					<span class="snl-loader-link">+</span>
+					<a href="https://www.linkedin.com/in/aadhyachintala/" target="_blank" class="snl-loader-link aadhya-shine" aria-label="Aadhya Chintala">Aadhya Chintala</a>
+                </p>
+                <div class="footer-socials">
+                    <a href="https://x.com/anirudhvemula" target="_blank" class="social-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.facebook.com/" target="_blank" class="social-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<!-- Info Panel -->
+<div class="info-panel-overlay" id="infoPanelOverlay"></div>
+<div class="info-panel" id="infoPanel">
+    <button class="info-panel-close" id="infoPanelClose" aria-label="Close Panel">&#x2715;</button>
+
+    <div class="info-panel-logo">
+        <a href="#">PHORGE<span>.AI</span></a>
+    </div>
+
+    <div class="info-panel-desc">
+        <p>At <strong>Phorge</strong>, we specialize in building intelligent digital solutions that help businesses embrace the future. From <strong>AI-powered automation</strong> to <strong>cloud transformation</strong> and <strong>data-driven insights</strong>, we deliver results.</p>
+    </div>
+
+    <div class="info-panel-divider"></div>
+
+    <div class="info-panel-item">
+        <div class="info-panel-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 256 256"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"></path></svg>
+        </div>
+        <div class="info-panel-item-meta">
+            <h5>Address</h5>
+            <p>4th floor, Inwinex Tower, D No. 8, 2 277 <br> Road No. 2, Banjara Hills, Hyderabad, 500034</p>
+        </div>
+    </div>
+
+    <div class="info-panel-item">
+        <div class="info-panel-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 256 256"><path d="M168,112a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,112Zm-8,24H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm72-12A100.11,100.11,0,0,1,132,224H47.67A15.69,15.69,0,0,1,32,208.33V124a100,100,0,0,1,200,0Zm-16,0a84,84,0,0,0-168,0v84h84A84.09,84.09,0,0,0,216,124Z"></path></svg>
+        </div>
+        <div class="info-panel-item-meta">
+            <h5>Contact Us</h5>
+            <p>Phone : +91 6303253662<br>Email : info@phorge.ai</p>
+        </div>
+    </div>
+
+    <div class="info-panel-divider"></div>
+
+    <div class="info-panel-item">
+        <div class="info-panel-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 256 256"><path d="M128,32a96,96,0,1,0,96,96A96.11,96.11,0,0,0,128,32Zm0,176a80,80,0,1,1,80-80A80.09,80.09,0,0,1,128,208ZM184,120a8,8,0,0,1,0,16H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48Z"></path></svg>
+        </div>
+        <div class="info-panel-item-meta">
+            <h5>Business Hours</h5>
+            <p>Mon - Fri: 9:00 AM - 6:00 PM<br>Sat: 10:00 AM - 2:00 PM</p>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+<script>
+/* ── Footer brand column reveal ── */
+(function () {
+  var brand = document.querySelector('.footer-brand-reveal');
+  if (!brand) return;
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      brand.classList.add('in-view');
+      observer.unobserve(brand);
+    });
+  }, { threshold: 0.2 });
+  observer.observe(brand);
+})();
+</script>
+
+<script>
+  const slides = document.querySelectorAll(".phorge-slide");
+  let current = 0;
+
+  document.getElementById("nextSlide").onclick = () => {
+    slides[current].classList.remove("active");
+    current = (current + 1) % slides.length;
+    slides[current].classList.add("active");
+  };
+
+  document.getElementById("prevSlide").onclick = () => {
+    slides[current].classList.remove("active");
+    current = (current - 1 + slides.length) % slides.length;
+    slides[current].classList.add("active");
+  };
+</script>
+
+
+
+
+<script>
+(function () {
+  /* ── Hero title: curtain-lift word reveal ── */
+  var heroTitle = document.querySelector('.hero-title');
+  if (heroTitle) {
+    var raw = heroTitle.innerHTML;
+    heroTitle.innerHTML = raw.replace(/(<[^>]+>)|([^\s<]+)/g, function (m, tag, word) {
+      if (tag) return tag;
+      if (word) return '<span class="hero-word-outer"><span class="hero-word">' + word + '</span></span>';
+      return m;
+    });
+    heroTitle.querySelectorAll('.hero-word').forEach(function (w, i) {
+      w.style.animationDelay = (0.05 + i * 0.07) + 's';
+    });
+  }
+
+  /* ── Split chars elements into letter spans ── */
+  document.querySelectorAll('[data-reveal="chars"]').forEach(function (el) {
+    el.innerHTML = el.textContent.split('').map(function (ch) {
+      return ch === ' '
+        ? '<span class="reveal-char" style="display:inline-block;min-width:0.3em"> </span>'
+        : '<span class="reveal-char">' + ch + '</span>';
+    }).join('');
+  });
+
+  /* ── IntersectionObserver ── */
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      obs.unobserve(el);
+      var type = el.dataset.reveal;
+
+      if (type === 'chars') {
+        el.querySelectorAll('.reveal-char').forEach(function (ch, i) {
+          ch.style.animationDelay = (i * 0.04) + 's';
+        });
+        el.classList.add('revealed');
+        return;
+      }
+      if (type === 'lines') {
+        Array.from(el.children).forEach(function (child, i) {
+          child.style.transitionDelay = (i * 0.12) + 's';
+        });
+        el.classList.add('revealed');
+        return;
+      }
+      /* up / left / right / fade / scale — stagger same-type siblings */
+      var group = el.parentElement
+        ? el.parentElement.querySelectorAll('[data-reveal="' + type + '"]')
+        : null;
+      var idx = group ? Array.prototype.indexOf.call(group, el) : 0;
+      el.style.animationDelay = (idx * 0.13) + 's';
+      el.classList.add('revealed');
+      el.addEventListener('animationend', function () {
+        el.style.animation      = 'none';
+        el.style.animationDelay = '';
+        el.style.opacity        = '1';
+        el.style.transform      = '';
+      }, { once: true });
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('[data-reveal]').forEach(function (el) { obs.observe(el); });
+
+  /* ── Service cards — scroll reveal ── */
+  var cardObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      cardObs.unobserve(el);
+      var idx = Array.prototype.indexOf.call(document.querySelectorAll('.service-card'), el);
+      setTimeout(function () {
+        el.classList.add('in-view');
+        el.addEventListener('animationend', function () {
+          el.style.animation = 'none';
+          el.style.opacity   = '1';
+          el.style.transform = '';
+        }, { once: true });
+      }, 60 + idx * 120);
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.service-card').forEach(function (el) { cardObs.observe(el); });
+})();
+</script>
+</body>
+</html>
