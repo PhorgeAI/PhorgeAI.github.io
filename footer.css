@@ -9,6 +9,26 @@
     color: #deba8a; /* Phorge-Gold */
 }
 
+/* ── "Designed by ..." credit ──
+   Inline alongside the copyright text on wide screens. On narrow screens the
+   loader badge + "+" + name were overlapping the copyright sentence instead
+   of wrapping cleanly, so force this whole group onto its own line there —
+   same 768px breakpoint the rest of the footer already stacks at. */
+.footer-credit {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+@media (max-width: 768px) {
+    .footer-credit {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+}
+
 /* ── Shared link wrapper ── */
 .snl-loader-link {
     display: inline-flex;

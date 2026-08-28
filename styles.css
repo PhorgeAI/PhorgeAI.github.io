@@ -8,7 +8,13 @@
 	--Phorge-Dgray: #333333;
 	--Phorge-Lgray: #F2F2F2;
 	--Phorge-Orange: #FF3333;
-	
+
+	/* Lowercase alias — the LOGO.svg export's internal <style> block fills its
+	   paths with var(--phorge-gold) (lowercase). CSS custom properties are
+	   case-sensitive, so without this alias that fill would fail to resolve
+	   and fall back to black. Keep this in sync with --Phorge-Gold above. */
+	--phorge-gold: var(--Phorge-Gold);
+
 	--gold-primary: #B8860B;
 	--gold-light: #D4A84B;
 	--gold-dark: #8B6914;
@@ -149,18 +155,30 @@ img {
 	justify-content: space-between;
 }
 
+/* The logo is now an inlined <svg class="logo-mark"> (see index.html) rather
+   than an <img src="Logo.svg">. That's a deliberate change, not a stray edit:
+   an externally-referenced SVG image is rendered in an isolated context that
+   can't see this page's CSS at all, so its internal `fill: var(--Phorge-Gold)`
+   had nothing to resolve against and fell back to black-on-black — invisible.
+   Inlining the markup directly into the HTML lets that var() resolve normally.
+   That also retires the old .logo img / .logo-fallback rules below — inline
+   SVG doesn't have a "failed to load" state the way an <img> does, so there's
+   nothing left for a fallback to guard against. The accessible name now comes
+   from aria-label="Phorge.AI" on the <a>, matching what was previously the
+   .logo-fallback text. */
 .logo {
-	font-family: "Nimbus Sans", serif;
-	font-size: 28px;
-	font-weight: 700;
-	color: var(--Phorge-Gold);
-	
-	text-transform: uppercase;
+	display: inline-flex;
+	align-items: center;
 }
 
-.logo span {
-	color: var(--Phorge-Lgray);
-	font-weight: 700;
+.logo-mark {
+	display: block;
+	height: 34px;
+	width: auto;
+}
+
+.footer-brand .logo-mark {
+	height: 44px;
 }
 
 .nav-links {
@@ -2393,22 +2411,11 @@ section {
 	animation-delay: 0.4s;
 }
 
-@keyframes beat {
-    0%, 100% {
-        transform: scale(1);
-    }
-    30% {
-        transform: scale(1.2);
-    }
-    60% {
-        transform: scale(0.95);
-    }
-}
-/*
-.hover-beat:hover {
-  animation: fa-beat 3s 2;
-}
-*/
+/* Icon hover motion is handled by .service-card:hover .service-icon i
+   (a smooth transition, not a keyframe animation) so all four service
+   icons share one consistent hover feel. The old .hover-beat class and
+   its keyframe were dead code (referenced an undefined "fa-beat"
+   animation and were never enabled) — removed along with its markup. */
 /* ===== World Map Section ===== */
 .worldmap-section {
     position: relative;
@@ -2438,9 +2445,14 @@ section {
 /* Override worldmap.css body rules — scope to the section */
 .worldmap-section .map-grid {
     display: grid;
-    grid-template-columns: repeat(55, 1fr);
+    grid-template-columns: repeat(55, minmax(0, 1fr));
     grid-template-rows: repeat(35, 1fr);
-    font-size: 11px;
+    /* 55 columns at a fixed 11px cell size need 605px — wider than most phones,
+       so the grid overflowed past the section's overflow:hidden and got clipped
+       on the right (the section has no .container, so it's edge-to-edge — hence
+       100vw rather than a container-relative unit). Scale the cell size down to
+       whatever fits the viewport, capped at the original 11px on larger screens. */
+    font-size: clamp(3.5px, calc((100vw - 8px) / 55), 11px);
     max-width: 100%;
 }
 
