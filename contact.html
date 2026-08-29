@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phorge.AI - Driving Digital Transformation with AI, Cloud &amp; Automation</title>
+    <meta name="description" content="Phorge.AI is the technology venture of Phorge Developers, delivering AI-powered automation, cloud transformation, and data-driven consulting for ambitious businesses.">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="worldmap.css">
+    <style>
+        /* Neutralise worldmap.css body overrides — restore values from styles.css */
+        body {
+            display: block !important;
+            height: auto !important;
+            place-items: unset !important;
+            background-color: var(--Phorge-Dgray) !important;
+            font-size: 16px !important;
+        }
+        /* World-map cell sizing now lives entirely in styles.css as a responsive
+           clamp() — this duplicate fixed-11px override was cascading in *after*
+           styles.css (inline <style> beats an earlier <link> at equal specificity)
+           and silently cancelling the responsive rule. Removed. */
+
+        /* ── Footer styles moved to footer.css ── */
+
+        /* ── Fix: fixed navbar was overlapping the world-map graphic ──
+           .nav is position:fixed, so it sits outside normal document flow
+           and doesn't push content down. The hero section already reserves
+           room for it (padding: 120px 0 80px in styles.css), but the
+           world-map section is now the first thing in the page and only had
+           padding: 3rem 0 2rem, so the nav bar (~90-100px tall with its
+           padding + logo) rendered on top of the map. This overrides just
+           the padding-top longhand — same specificity as the original rule,
+           later in the cascade, so it wins for that one property only. */
+        .worldmap-section {
+            padding-top: 130px;
+        }
+
+        /* ── Reduce the gap between sections without touching styles.css ──
+           styles.css sets a blanket `section { padding: 120px 0; }` (80px 0
+           under 768px). These rules have the same specificity as the
+           originals and come later in the cascade, so they win and tighten
+           the vertical rhythm across the page. */
+        section {
+            padding: 70px 0;
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 50px 0;
+            }
+
+            .hero {
+                padding: 100px 0 40px;
+            }
+        }
+    </style>
+	
+	<link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+	<link rel="shortcut icon" href="favicon/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+	<meta name="apple-mobile-web-app-title" content="PHORGE.AI" />
+	<link rel="manifest" href="favicon/site.webmanifest" />
+
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="navbar">
+        <div class="container">
+            <div class="nav-inner">
+                <a href="#hero" class="logo" aria-label="Phorge.AI">
+                    <svg class="logo-mark" viewBox="76.4 0 1170.59 424.89" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                        <defs>
+                            <style>
+                                .cls-1 {
+                                    fill: var(--Phorge-Gold);
+                                }
+                            </style>
+                        </defs>
+                        <g>
+                            <path class="cls-1" d="M365.38,278.35h-27.53v-131.8h60.21c25.52,0,40.94,16.34,40.94,42.22,0,11.93-6.61,42.04-42.04,42.04h-31.57v47.54ZM390.9,208.04c20.56,0,20.56-14.69,20.56-20.56,0-12.85-7.16-18.17-24.23-18.17h-21.84v38.73h25.52Z" />
+                            <path class="cls-1" d="M488.38,219.24v59.11h-27.54v-131.8h27.54v49.93h51.4v-49.93h27.53v131.8h-27.53v-59.11h-51.4Z" />
+                            <path class="cls-1" d="M657.59,143.06c17.44,0,63.33,7.53,63.33,69.39s-45.89,69.39-63.33,69.39-63.33-7.53-63.33-69.39,45.89-69.39,63.33-69.39ZM657.59,258.52c14.87,0,35.8-9.18,35.8-46.08s-20.93-46.08-35.8-46.08-35.8,9.18-35.8,46.08,20.93,46.08,35.8,46.08Z" />
+                            <path class="cls-1" d="M745.94,146.55h66.64c35.06,0,41.49,25.88,41.49,37.26,0,14.5-7.34,26.98-20.38,31.39,10.83,4.77,16.71,8.81,16.71,33.41,0,19.27,0,24.05,5.87,26.25v3.49h-30.47c-1.84-6.24-2.94-13.03-2.94-26.62,0-17.99-1.1-24.97-21.48-24.97h-28.45v51.58h-26.98v-131.8ZM805.23,204.55c14.32,0,21.29-4.96,21.29-17.99,0-6.98-3.12-17.26-19.27-17.26h-34.33v35.25h32.31Z" />
+                            <path class="cls-1" d="M950.64,207.31h55.07v71.04h-18.36l-2.75-16.52c-6.98,8.08-17.07,20.01-41.12,20.01-31.76,0-60.58-22.76-60.58-69.02,0-35.98,20.01-69.94,64.43-69.76,40.39,0,56.36,26.25,57.82,44.42h-27.54c0-5.14-9.36-21.66-28.82-21.66s-37.81,13.58-37.81,47.36c0,35.98,19.64,45.34,38.37,45.34,6.06,0,26.25-2.39,31.94-29h-30.66v-22.21Z" />
+                            <path class="cls-1" d="M1139.2,169.86h-69.94v27.72h64.25v23.31h-64.25v34.14h73.06v23.31h-100.05v-131.8h96.92v23.31Z" />
+                        </g>
+                        <g>
+                            <polygon class="cls-1" points="207.25 179.51 207.25 327.4 203.09 329.8 201.91 330.49 201.91 182.59 199.32 181.1 196.71 179.58 191.37 176.5 186.17 173.5 180.83 170.41 175.62 167.41 170.28 164.33 165.08 161.33 159.74 158.24 154.54 155.24 149.2 152.15 143.99 149.15 139.64 146.64 140.74 146 143.99 144.12 144.98 143.56 149.2 145.99 154.54 149.08 159.74 152.08 165.08 155.16 170.28 158.16 175.62 161.25 180.83 164.25 186.17 167.34 191.37 170.34 196.71 173.42 201.91 176.42 204.66 178.01 207.25 179.51" />
+                            <polygon class="cls-1" points="143.99 216.03 143.99 363.93 138.65 367.02 138.65 219.1 136.08 217.62 76.4 183.16 81.73 180.09 138.65 212.94 141.41 214.53 143.99 216.03" />
+                            <polygon class="cls-1" points="154.54 209.94 154.54 357.85 149.2 360.93 149.2 213.02 146.62 211.53 143.99 210.02 138.65 206.93 86.94 177.08 92.27 173.99 138.65 200.77 143.99 203.86 149.2 206.86 151.95 208.45 154.54 209.94" />
+                            <polygon class="cls-1" points="165.08 203.86 165.08 351.76 159.74 354.84 159.74 206.93 157.15 205.45 154.54 203.93 149.2 200.84 143.99 197.84 138.65 194.76 97.47 170.99 102.81 167.9 138.65 188.6 143.99 191.68 149.2 194.68 154.54 197.77 159.74 200.77 162.49 202.36 165.08 203.86" />
+                            <polygon class="cls-1" points="175.62 197.77 175.62 345.67 170.28 348.76 170.28 200.84 167.69 199.36 165.08 197.84 159.74 194.76 154.54 191.76 149.2 188.67 143.99 185.67 138.65 182.59 108.02 164.9 113.35 161.82 138.65 176.42 143.99 179.51 149.2 182.51 154.54 185.6 159.74 188.6 165.08 191.68 170.28 194.68 173.03 196.27 175.62 197.77" />
+                            <polygon class="cls-1" points="186.17 191.68 186.17 339.59 180.83 342.66 180.83 194.76 178.24 193.27 175.62 191.76 170.28 188.67 165.08 185.67 159.74 182.59 154.54 179.58 149.2 176.5 143.99 173.5 138.65 170.41 118.56 158.82 123.9 155.73 138.65 164.25 143.99 167.34 149.2 170.34 154.54 173.42 159.74 176.42 165.08 179.51 170.28 182.51 175.62 185.6 180.83 188.6 183.58 190.19 186.17 191.68" />
+                            <polygon class="cls-1" points="196.71 185.6 196.71 333.49 191.37 336.57 191.37 188.67 188.78 187.19 186.17 185.67 180.83 182.59 175.62 179.58 170.28 176.5 165.08 173.5 159.74 170.41 154.54 167.41 149.2 164.33 143.99 161.33 138.65 158.24 129.1 152.73 134.44 149.64 138.65 152.08 143.99 155.16 149.2 158.16 154.54 161.25 159.74 164.25 165.08 167.34 170.28 170.34 175.62 173.42 180.83 176.42 186.17 179.51 191.37 182.51 194.12 184.1 196.71 185.6" />
+                            <polygon class="cls-1" points="228.33 167.34 228.33 240.68 224.55 242.87 223.26 243.61 223 243.46 223 170.41 220.41 168.92 207.25 161.33 201.91 158.24 196.71 155.24 191.37 152.15 186.17 149.15 180.83 146.07 175.62 143.07 170.28 139.98 165.08 136.98 159.74 133.89 154.54 130.89 149.2 127.81 143.99 124.81 138.65 121.72 96.68 97.49 98.15 96.64 102.02 94.41 138.65 115.56 143.99 118.63 149.2 121.65 154.54 124.72 159.74 127.73 165.08 130.81 170.28 133.82 175.62 136.9 180.83 139.9 186.17 142.99 191.37 145.99 196.71 149.08 201.91 152.08 207.25 155.16 223 164.25 225.75 165.84 228.33 167.34" />
+                            <polygon class="cls-1" points="238.87 161.25 238.87 234.6 233.81 237.52 233.53 237.36 233.53 164.33 230.95 162.83 228.33 161.33 223 158.24 207.25 149.15 201.91 146.07 196.71 143.07 191.37 139.98 186.17 136.98 180.83 133.89 175.62 130.89 170.28 127.81 165.08 124.81 159.74 121.72 154.54 118.72 149.2 115.63 143.99 112.63 138.65 109.55 107.22 91.4 112.56 88.32 138.65 103.39 143.99 106.46 149.2 109.47 154.54 112.55 159.74 115.56 165.08 118.63 170.28 121.65 175.62 124.72 180.83 127.73 186.17 130.81 191.37 133.82 196.71 136.9 201.91 139.9 207.25 142.99 223 152.08 228.33 155.16 233.53 158.16 236.29 159.76 238.87 161.25" />
+                            <polygon class="cls-1" points="249.41 155.16 249.41 228.51 244.35 231.44 244.07 231.28 244.07 158.24 241.49 156.74 238.87 155.24 233.53 152.15 228.33 149.15 223 146.07 207.25 136.98 201.91 133.89 196.71 130.89 191.37 127.81 186.17 124.81 180.83 121.72 175.62 118.72 170.28 115.63 165.08 112.63 159.74 109.55 154.54 106.55 149.2 103.46 143.99 100.46 138.65 97.37 117.76 85.31 123.1 82.23 149.2 97.3 154.54 100.37 159.74 103.39 165.08 106.46 170.28 109.47 175.62 112.55 180.83 115.56 186.17 118.63 191.37 121.65 196.71 124.72 201.91 127.73 207.25 130.81 223 139.9 228.33 142.99 233.53 145.99 238.87 149.08 244.07 152.08 246.83 153.67 249.41 155.16" />
+                            <polygon class="cls-1" points="259.96 149.08 259.96 222.43 254.89 225.35 254.62 225.19 254.62 152.15 252.03 150.66 249.41 149.15 244.07 146.07 238.87 143.07 233.53 139.98 228.33 136.98 223 133.89 207.25 124.81 201.91 121.72 196.71 118.72 191.37 115.63 186.17 112.63 180.83 109.55 175.62 106.55 170.28 103.46 165.08 100.46 159.74 97.37 128.3 79.22 133.64 76.15 170.28 97.3 175.62 100.37 180.83 103.39 186.17 106.46 191.37 109.47 196.71 112.55 201.91 115.56 207.25 118.63 223 127.73 228.33 130.81 233.53 133.82 238.87 136.9 244.07 139.9 249.41 142.99 254.62 145.99 257.37 147.58 259.96 149.08" />
+                            <polygon class="cls-1" points="270.5 142.99 270.5 216.33 265.43 219.26 265.16 219.41 265.16 146.07 262.57 144.57 259.96 143.07 254.62 139.98 249.41 136.98 244.07 133.89 238.87 130.89 233.53 127.81 228.33 124.81 223 121.72 207.25 112.63 201.91 109.55 196.71 106.55 191.37 103.46 186.17 100.46 180.83 97.37 138.84 73.13 144.18 70.05 191.37 97.3 196.71 100.37 201.91 103.39 207.25 106.46 223 115.56 228.33 118.63 233.53 121.65 238.87 124.72 244.07 127.73 249.41 130.81 254.62 133.82 259.96 136.9 265.16 139.9 267.91 141.49 270.5 142.99" />
+                            <polygon class="cls-1" points="281.04 136.89 281.04 210.24 275.7 213.33 275.7 139.98 273.12 138.48 270.5 136.98 265.16 133.89 259.96 130.89 254.62 127.81 249.41 124.81 244.07 121.72 238.87 118.72 233.53 115.63 228.33 112.63 223 109.55 207.25 100.46 201.91 97.37 149.38 67.05 154.72 63.96 223 103.39 228.33 106.46 233.53 109.47 238.87 112.55 244.07 115.56 249.41 118.63 254.62 121.65 259.96 124.72 265.16 127.73 270.5 130.81 275.7 133.82 278.46 135.4 281.04 136.89" />
+                            <polygon class="cls-1" points="291.59 130.82 291.59 204.15 289.01 205.65 286.51 207.09 286.25 206.93 286.25 133.89 283.66 132.4 281.04 130.89 275.7 127.81 270.5 124.81 265.16 121.72 259.96 118.72 254.62 115.63 249.41 112.63 244.07 109.55 238.87 106.55 233.53 103.46 228.33 100.46 223 97.37 159.92 60.96 162.59 59.42 165.26 57.88 233.53 97.3 238.87 100.37 244.07 103.39 249.41 106.46 254.62 109.47 259.96 112.55 265.16 115.56 270.5 118.63 275.7 121.65 281.04 124.72 286.25 127.73 289 129.31 291.59 130.82" />
+                        </g>
+                    </svg>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#testimonials">Case Studies</a></li>
+                    <li><a href="#insights">Blog</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+                <div class="nav-cta">
+                    <a href="tel:+916303253662" class="btn btn-outline icon-btn" aria-label="Call Phorge.AI">
+                        <i class="fa-solid fa-phone"></i>
+                    </a>
+                    <a href="#" class="btn btn-primary icon-btn" id="infoPanelBtn" aria-label="Open Info Panel">
+                        <i class="fa-solid fa-grip-vertical"></i>
+                    </a>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close Menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <ul class="mobile-nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#testimonials">Case Studies</a></li>
+            <li><a href="#insights">Blog</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+        <div class="mobile-menu-cta">
+            <a href="#contact" class="btn btn-outline">Contact Us</a>
+            <a href="#contact" class="btn btn-primary">Book Consultation</a>
+        </div>
+    </div>
+
+
+    <!-- World Map Section -->
+    <section class="worldmap-section">
+        <div class="map-grid"></div>
+        <script>
+            (function () {
+                const container = document.querySelector('.worldmap-section .map-grid');
+                for (let i = 0; i < 1925; i++) {
+                    const div = document.createElement('div');
+                    div.classList.add('cell');
+                    container.appendChild(div);
+                }
+            })();
+        </script>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="section-label" data-reveal="chars">Contact Us</div>
+                    <h3>Let's Discuss Your Transformation Goals</h3>
+                    <p>Our experts are here to answer your questions and guide you through every step of your business transformation journey.</p>
+                    <ul class="contact-details" data-reveal="lines">
+                        <li>
+                            <div class="contact-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <div class="contact-label">Phone</div>
+                                <div class="contact-value">+91 63032 53662</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                    <polyline points="22,6 12,13 2,6" />
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <div class="contact-label">Email</div>
+                                <div class="contact-value">info@phorge.ai</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <div class="contact-label">OFFICE</div>
+                                <div class="contact-value">
+                                    <p>
+                                        4th floor, Inwinex Tower, D No. 8, 2 277 <br>
+                                        &nbsp;Road No. 2, Banjara Hills, Hyderabad, 500034
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12 6 12 12 16 14" />
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <div class="contact-label">Business Hours</div>
+                                <div class="contact-value">Mon - Fri: 9:00 AM - 6:00 PM<br>Sat: 10:00 AM - 2:00 PM</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contact-form-wrapper" data-reveal="right">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label class="form-label">First Name</label>
+                                <input type="text" class="form-input" placeholder="John" required>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" class="form-input" placeholder="Smith" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" class="form-input" placeholder="John@gmail.com" required>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label class="form-label">Phone Number</label>
+                                <input type="tel" class="form-input" placeholder="+91 99999 99999">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">I'm interested in</label>
+                            <select class="form-select" required>
+                                <option value="">Select an option</option>
+                                <option value="automation">AI-Powered Automation</option>
+                                <option value="cloud">Cloud Migration &amp; Optimization</option>
+                                <option value="data">Data &amp; Analytics</option>
+                                <option value="agents">Multi-Agent Systems</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-textarea" placeholder="Tell us about your business transformation goals or questions..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary form-submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand footer-brand-reveal">
+                    <a href="#hero" class="logo footer-brand-item" aria-label="Phorge.AI">
+                        <svg class="logo-mark" viewBox="76.4 0 1170.59 424.89" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                            <defs>
+                                <style>
+                                    .cls-1 {
+                                        fill: var(--Phorge-Gold);
+                                    }
+                                </style>
+                            </defs>
+                            <g>
+                                <path class="cls-1" d="M365.38,278.35h-27.53v-131.8h60.21c25.52,0,40.94,16.34,40.94,42.22,0,11.93-6.61,42.04-42.04,42.04h-31.57v47.54ZM390.9,208.04c20.56,0,20.56-14.69,20.56-20.56,0-12.85-7.16-18.17-24.23-18.17h-21.84v38.73h25.52Z" />
+                                <path class="cls-1" d="M488.38,219.24v59.11h-27.54v-131.8h27.54v49.93h51.4v-49.93h27.53v131.8h-27.53v-59.11h-51.4Z" />
+                                <path class="cls-1" d="M657.59,143.06c17.44,0,63.33,7.53,63.33,69.39s-45.89,69.39-63.33,69.39-63.33-7.53-63.33-69.39,45.89-69.39,63.33-69.39ZM657.59,258.52c14.87,0,35.8-9.18,35.8-46.08s-20.93-46.08-35.8-46.08-35.8,9.18-35.8,46.08,20.93,46.08,35.8,46.08Z" />
+                                <path class="cls-1" d="M745.94,146.55h66.64c35.06,0,41.49,25.88,41.49,37.26,0,14.5-7.34,26.98-20.38,31.39,10.83,4.77,16.71,8.81,16.71,33.41,0,19.27,0,24.05,5.87,26.25v3.49h-30.47c-1.84-6.24-2.94-13.03-2.94-26.62,0-17.99-1.1-24.97-21.48-24.97h-28.45v51.58h-26.98v-131.8ZM805.23,204.55c14.32,0,21.29-4.96,21.29-17.99,0-6.98-3.12-17.26-19.27-17.26h-34.33v35.25h32.31Z" />
+                                <path class="cls-1" d="M950.64,207.31h55.07v71.04h-18.36l-2.75-16.52c-6.98,8.08-17.07,20.01-41.12,20.01-31.76,0-60.58-22.76-60.58-69.02,0-35.98,20.01-69.94,64.43-69.76,40.39,0,56.36,26.25,57.82,44.42h-27.54c0-5.14-9.36-21.66-28.82-21.66s-37.81,13.58-37.81,47.36c0,35.98,19.64,45.34,38.37,45.34,6.06,0,26.25-2.39,31.94-29h-30.66v-22.21Z" />
+                                <path class="cls-1" d="M1139.2,169.86h-69.94v27.72h64.25v23.31h-64.25v34.14h73.06v23.31h-100.05v-131.8h96.92v23.31Z" />
+                            </g>
+                            <g>
+                                <polygon class="cls-1" points="207.25 179.51 207.25 327.4 203.09 329.8 201.91 330.49 201.91 182.59 199.32 181.1 196.71 179.58 191.37 176.5 186.17 173.5 180.83 170.41 175.62 167.41 170.28 164.33 165.08 161.33 159.74 158.24 154.54 155.24 149.2 152.15 143.99 149.15 139.64 146.64 140.74 146 143.99 144.12 144.98 143.56 149.2 145.99 154.54 149.08 159.74 152.08 165.08 155.16 170.28 158.16 175.62 161.25 180.83 164.25 186.17 167.34 191.37 170.34 196.71 173.42 201.91 176.42 204.66 178.01 207.25 179.51" />
+                                <polygon class="cls-1" points="143.99 216.03 143.99 363.93 138.65 367.02 138.65 219.1 136.08 217.62 76.4 183.16 81.73 180.09 138.65 212.94 141.41 214.53 143.99 216.03" />
+                                <polygon class="cls-1" points="154.54 209.94 154.54 357.85 149.2 360.93 149.2 213.02 146.62 211.53 143.99 210.02 138.65 206.93 86.94 177.08 92.27 173.99 138.65 200.77 143.99 203.86 149.2 206.86 151.95 208.45 154.54 209.94" />
+                                <polygon class="cls-1" points="165.08 203.86 165.08 351.76 159.74 354.84 159.74 206.93 157.15 205.45 154.54 203.93 149.2 200.84 143.99 197.84 138.65 194.76 97.47 170.99 102.81 167.9 138.65 188.6 143.99 191.68 149.2 194.68 154.54 197.77 159.74 200.77 162.49 202.36 165.08 203.86" />
+                                <polygon class="cls-1" points="175.62 197.77 175.62 345.67 170.28 348.76 170.28 200.84 167.69 199.36 165.08 197.84 159.74 194.76 154.54 191.76 149.2 188.67 143.99 185.67 138.65 182.59 108.02 164.9 113.35 161.82 138.65 176.42 143.99 179.51 149.2 182.51 154.54 185.6 159.74 188.6 165.08 191.68 170.28 194.68 173.03 196.27 175.62 197.77" />
+                                <polygon class="cls-1" points="186.17 191.68 186.17 339.59 180.83 342.66 180.83 194.76 178.24 193.27 175.62 191.76 170.28 188.67 165.08 185.67 159.74 182.59 154.54 179.58 149.2 176.5 143.99 173.5 138.65 170.41 118.56 158.82 123.9 155.73 138.65 164.25 143.99 167.34 149.2 170.34 154.54 173.42 159.74 176.42 165.08 179.51 170.28 182.51 175.62 185.6 180.83 188.6 183.58 190.19 186.17 191.68" />
+                                <polygon class="cls-1" points="196.71 185.6 196.71 333.49 191.37 336.57 191.37 188.67 188.78 187.19 186.17 185.67 180.83 182.59 175.62 179.58 170.28 176.5 165.08 173.5 159.74 170.41 154.54 167.41 149.2 164.33 143.99 161.33 138.65 158.24 129.1 152.73 134.44 149.64 138.65 152.08 143.99 155.16 149.2 158.16 154.54 161.25 159.74 164.25 165.08 167.34 170.28 170.34 175.62 173.42 180.83 176.42 186.17 179.51 191.37 182.51 194.12 184.1 196.71 185.6" />
+                                <polygon class="cls-1" points="228.33 167.34 228.33 240.68 224.55 242.87 223.26 243.61 223 243.46 223 170.41 220.41 168.92 207.25 161.33 201.91 158.24 196.71 155.24 191.37 152.15 186.17 149.15 180.83 146.07 175.62 143.07 170.28 139.98 165.08 136.98 159.74 133.89 154.54 130.89 149.2 127.81 143.99 124.81 138.65 121.72 96.68 97.49 98.15 96.64 102.02 94.41 138.65 115.56 143.99 118.63 149.2 121.65 154.54 124.72 159.74 127.73 165.08 130.81 170.28 133.82 175.62 136.9 180.83 139.9 186.17 142.99 191.37 145.99 196.71 149.08 201.91 152.08 207.25 155.16 223 164.25 225.75 165.84 228.33 167.34" />
+                                <polygon class="cls-1" points="238.87 161.25 238.87 234.6 233.81 237.52 233.53 237.36 233.53 164.33 230.95 162.83 228.33 161.33 223 158.24 207.25 149.15 201.91 146.07 196.71 143.07 191.37 139.98 186.17 136.98 180.83 133.89 175.62 130.89 170.28 127.81 165.08 124.81 159.74 121.72 154.54 118.72 149.2 115.63 143.99 112.63 138.65 109.55 107.22 91.4 112.56 88.32 138.65 103.39 143.99 106.46 149.2 109.47 154.54 112.55 159.74 115.56 165.08 118.63 170.28 121.65 175.62 124.72 180.83 127.73 186.17 130.81 191.37 133.82 196.71 136.9 201.91 139.9 207.25 142.99 223 152.08 228.33 155.16 233.53 158.16 236.29 159.76 238.87 161.25" />
+                                <polygon class="cls-1" points="249.41 155.16 249.41 228.51 244.35 231.44 244.07 231.28 244.07 158.24 241.49 156.74 238.87 155.24 233.53 152.15 228.33 149.15 223 146.07 207.25 136.98 201.91 133.89 196.71 130.89 191.37 127.81 186.17 124.81 180.83 121.72 175.62 118.72 170.28 115.63 165.08 112.63 159.74 109.55 154.54 106.55 149.2 103.46 143.99 100.46 138.65 97.37 117.76 85.31 123.1 82.23 149.2 97.3 154.54 100.37 159.74 103.39 165.08 106.46 170.28 109.47 175.62 112.55 180.83 115.56 186.17 118.63 191.37 121.65 196.71 124.72 201.91 127.73 207.25 130.81 223 139.9 228.33 142.99 233.53 145.99 238.87 149.08 244.07 152.08 246.83 153.67 249.41 155.16" />
+                                <polygon class="cls-1" points="259.96 149.08 259.96 222.43 254.89 225.35 254.62 225.19 254.62 152.15 252.03 150.66 249.41 149.15 244.07 146.07 238.87 143.07 233.53 139.98 228.33 136.98 223 133.89 207.25 124.81 201.91 121.72 196.71 118.72 191.37 115.63 186.17 112.63 180.83 109.55 175.62 106.55 170.28 103.46 165.08 100.46 159.74 97.37 128.3 79.22 133.64 76.15 170.28 97.3 175.62 100.37 180.83 103.39 186.17 106.46 191.37 109.47 196.71 112.55 201.91 115.56 207.25 118.63 223 127.73 228.33 130.81 233.53 133.82 238.87 136.9 244.07 139.9 249.41 142.99 254.62 145.99 257.37 147.58 259.96 149.08" />
+                                <polygon class="cls-1" points="270.5 142.99 270.5 216.33 265.43 219.26 265.16 219.41 265.16 146.07 262.57 144.57 259.96 143.07 254.62 139.98 249.41 136.98 244.07 133.89 238.87 130.89 233.53 127.81 228.33 124.81 223 121.72 207.25 112.63 201.91 109.55 196.71 106.55 191.37 103.46 186.17 100.46 180.83 97.37 138.84 73.13 144.18 70.05 191.37 97.3 196.71 100.37 201.91 103.39 207.25 106.46 223 115.56 228.33 118.63 233.53 121.65 238.87 124.72 244.07 127.73 249.41 130.81 254.62 133.82 259.96 136.9 265.16 139.9 267.91 141.49 270.5 142.99" />
+                                <polygon class="cls-1" points="281.04 136.89 281.04 210.24 275.7 213.33 275.7 139.98 273.12 138.48 270.5 136.98 265.16 133.89 259.96 130.89 254.62 127.81 249.41 124.81 244.07 121.72 238.87 118.72 233.53 115.63 228.33 112.63 223 109.55 207.25 100.46 201.91 97.37 149.38 67.05 154.72 63.96 223 103.39 228.33 106.46 233.53 109.47 238.87 112.55 244.07 115.56 249.41 118.63 254.62 121.65 259.96 124.72 265.16 127.73 270.5 130.81 275.7 133.82 278.46 135.4 281.04 136.89" />
+                                <polygon class="cls-1" points="291.59 130.82 291.59 204.15 289.01 205.65 286.51 207.09 286.25 206.93 286.25 133.89 283.66 132.4 281.04 130.89 275.7 127.81 270.5 124.81 265.16 121.72 259.96 118.72 254.62 115.63 249.41 112.63 244.07 109.55 238.87 106.55 233.53 103.46 228.33 100.46 223 97.37 159.92 60.96 162.59 59.42 165.26 57.88 233.53 97.3 238.87 100.37 244.07 103.39 249.41 106.46 254.62 109.47 259.96 112.55 265.16 115.56 270.5 118.63 275.7 121.65 281.04 124.72 286.25 127.73 289 129.31 291.59 130.82" />
+                            </g>
+                        </svg>
+                    </a>
+
+                    <p class="footer-brand-item">At Phorge.AI, we specialize in building intelligent digital solutions that help businesses embrace the future. From AI-powered automation to cloud transformation and data-driven insights, we deliver results.</p>
+                </div>
+                <!--
+                <div class="footer-col">
+                    <h4 class="footer-title">Products</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Gold Coins</a></li>
+                        <li><a href="#">Gold Bars</a></li>
+                        <li><a href="#">Silver Products</a></li>
+                        <li><a href="#">Platinum</a></li>
+                        <li><a href="#">Palladium</a></li>
+                    </ul>
+                </div>
+                -->
+                <div class="footer-col">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">Automation &amp; Multi-Agent Systems</a></li>
+                        <li><a href="#services">Cloud Migration &amp; Cost Optimization</a></li>
+                        <li><a href="#services">AI-Powered Customer Support</a></li>
+                        <li><a href="#services">Data &amp; Analytics for Business Growth</a></li>
+                        <li><a href="#services">Intelligent Multi-Agent Automation Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#testimonials">Case Studies</a></li>
+                        <li><a href="#insights">Blog</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copy">
+                    &copy; 2026 Phorge. All rights reserved.
+                    <span class="footer-credit">
+                        Designed by
+                        <a href="https://www.linkedin.com/company/srinihiralabs/" target="_blank" class="snl-loader-link" aria-label="Sri Nihira Labs">
+                            <span class="snl-loader-wrapper">
+                                <span class="snl-loader"></span>
+                                <span class="snl-loader-text">SRI NIHIRA<br>L A B S</span>
+                            </span>
+                        </a>
+                        <span class="snl-loader-link">+</span>
+                        <a href="https://www.linkedin.com/in/aadhyachintala/" target="_blank" class="snl-loader-link aadhya-shine" aria-label="Aadhya Chintala">Aadhya Chintala</a>
+                    </span>
+                </p>
+                <div class="footer-socials">
+                    <a href="https://x.com/anirudhvemula" target="_blank" class="social-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.facebook.com/" target="_blank" class="social-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Info Panel -->
+    <div class="info-panel-overlay" id="infoPanelOverlay"></div>
+    <div class="info-panel" id="infoPanel">
+        <button class="info-panel-close" id="infoPanelClose" aria-label="Close Panel">&#x2715;</button>
+
+        <div class="info-panel-logo">
+            <a href="#hero">PHORGE<span>.AI</span></a>
+        </div>
+
+        <div class="info-panel-desc">
+            <p>At <strong>Phorge</strong>, we specialize in building intelligent digital solutions that help businesses embrace the future. From <strong>AI-powered automation</strong> to <strong>cloud transformation</strong> and <strong>data-driven insights</strong>, we deliver results.</p>
+        </div>
+
+        <div class="info-panel-divider"></div>
+
+        <div class="info-panel-item">
+            <div class="info-panel-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 256 256"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"></path></svg>
+            </div>
+            <div class="info-panel-item-meta">
+                <h5>Address</h5>
+                <p>4th floor, Inwinex Tower, D No. 8, 2 277 <br> Road No. 2, Banjara Hills, Hyderabad, 500034</p>
+            </div>
+        </div>
+
+        <div class="info-panel-item">
+            <div class="info-panel-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 256 256"><path d="M168,112a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,112Zm-8,24H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm72-12A100.11,100.11,0,0,1,132,224H47.67A15.69,15.69,0,0,1,32,208.33V124a100,100,0,0,1,200,0Zm-16,0a84,84,0,0,0-168,0v84h84A84.09,84.09,0,0,0,216,124Z"></path></svg>
+            </div>
+            <div class="info-panel-item-meta">
+                <h5>Contact Us</h5>
+                <p>Phone : +91 63032 53662<br>Email : info@phorge.ai</p>
+            </div>
+        </div>
+
+        <div class="info-panel-divider"></div>
+
+        <div class="info-panel-item">
+            <div class="info-panel-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 256 256"><path d="M128,32a96,96,0,1,0,96,96A96.11,96.11,0,0,0,128,32Zm0,176a80,80,0,1,1,80-80A80.09,80.09,0,0,1,128,208ZM184,120a8,8,0,0,1,0,16H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48Z"></path></svg>
+            </div>
+            <div class="info-panel-item-meta">
+                <h5>Business Hours</h5>
+                <p>Mon - Fri: 9:00 AM - 6:00 PM<br>Sat: 10:00 AM - 2:00 PM</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <script>
+        /* ── Footer brand column reveal ── */
+        (function () {
+            var brand = document.querySelector('.footer-brand-reveal');
+            if (!brand) return;
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting) return;
+                    brand.classList.add('in-view');
+                    observer.unobserve(brand);
+                });
+            }, { threshold: 0.2 });
+            observer.observe(brand);
+        })();
+    </script>
+
+    <script>
+        const slides = document.querySelectorAll(".phorge-slide");
+        let current = 0;
+
+        document.getElementById("nextSlide").onclick = () => {
+            slides[current].classList.remove("active");
+            current = (current + 1) % slides.length;
+            slides[current].classList.add("active");
+        };
+
+        document.getElementById("prevSlide").onclick = () => {
+            slides[current].classList.remove("active");
+            current = (current - 1 + slides.length) % slides.length;
+            slides[current].classList.add("active");
+        };
+    </script>
+
+
+
+
+    <script>
+        (function () {
+            /* ── Hero title: curtain-lift word reveal ── */
+            var heroTitle = document.querySelector('.hero-title');
+            if (heroTitle) {
+                var raw = heroTitle.innerHTML;
+                heroTitle.innerHTML = raw.replace(/(<[^>]+>)|([^\s<]+)/g, function (m, tag, word) {
+                    if (tag) return tag;
+                    if (word) return '<span class="hero-word-outer"><span class="hero-word">' + word + '</span></span>';
+                    return m;
+                });
+                heroTitle.querySelectorAll('.hero-word').forEach(function (w, i) {
+                    w.style.animationDelay = (0.05 + i * 0.07) + 's';
+                });
+            }
+
+            /* ── Split chars elements into letter spans ── */
+            document.querySelectorAll('[data-reveal="chars"]').forEach(function (el) {
+                el.innerHTML = el.textContent.split('').map(function (ch) {
+                    return ch === ' '
+                        ? '<span class="reveal-char" style="display:inline-block;min-width:0.3em"> </span>'
+                        : '<span class="reveal-char">' + ch + '</span>';
+                }).join('');
+            });
+
+            /* ── IntersectionObserver ── */
+            var obs = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting) return;
+                    var el = entry.target;
+                    obs.unobserve(el);
+                    var type = el.dataset.reveal;
+
+                    if (type === 'chars') {
+                        el.querySelectorAll('.reveal-char').forEach(function (ch, i) {
+                            ch.style.animationDelay = (i * 0.04) + 's';
+                        });
+                        el.classList.add('revealed');
+                        return;
+                    }
+                    if (type === 'lines') {
+                        Array.from(el.children).forEach(function (child, i) {
+                            child.style.transitionDelay = (i * 0.12) + 's';
+                        });
+                        el.classList.add('revealed');
+                        return;
+                    }
+                    /* up / left / right / fade / scale — stagger same-type siblings */
+                    var group = el.parentElement
+                        ? el.parentElement.querySelectorAll('[data-reveal="' + type + '"]')
+                        : null;
+                    var idx = group ? Array.prototype.indexOf.call(group, el) : 0;
+                    el.style.animationDelay = (idx * 0.13) + 's';
+                    el.classList.add('revealed');
+                    el.addEventListener('animationend', function () {
+                        el.style.animation = 'none';
+                        el.style.animationDelay = '';
+                        el.style.opacity = '1';
+                        el.style.transform = '';
+                    }, { once: true });
+                });
+            }, { threshold: 0.12 });
+
+            document.querySelectorAll('[data-reveal]').forEach(function (el) { obs.observe(el); });
+
+            /* ── Service cards — scroll reveal ── */
+            var cardObs = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting) return;
+                    var el = entry.target;
+                    cardObs.unobserve(el);
+                    var idx = Array.prototype.indexOf.call(document.querySelectorAll('.service-card'), el);
+                    setTimeout(function () {
+                        el.classList.add('in-view');
+                        el.addEventListener('animationend', function () {
+                            el.style.animation = 'none';
+                            el.style.opacity = '1';
+                            el.style.transform = '';
+                        }, { once: true });
+                    }, 60 + idx * 120);
+                });
+            }, { threshold: 0.12 });
+            document.querySelectorAll('.service-card').forEach(function (el) { cardObs.observe(el); });
+        })();
+    </script>
+    <!-- Phorge logo electric-pulse animation (three.js), scoped to #phorge-pulse-frame -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        (function () {
+            var container = document.getElementById('phorge-pulse-frame');
+            var canvasEl = document.getElementById('phorge-pulse-canvas');
+            if (!container || !canvasEl || typeof THREE === 'undefined') return;
+
+            function getSize() {
+                var r = container.getBoundingClientRect();
+                return { w: Math.max(1, Math.round(r.width)), h: Math.max(1, Math.round(r.height)) };
+            }
+
+            // raw stripe data: each stripe = [ [poly1 pts...], [poly2 pts...] ]
+            var raw = [
+                [[[0, 0, 0], [-5, 0, 0], [-5, 1, 0], [0, 1, 0]], [[0, 0, 0], [0, 1, 0], [0, 1, -20], [0, 0, -20]]],
+                [[[0, 2, 0], [-5, 2, 0], [-5, 3, 0], [0, 3, 0]], [[0, 2, 0], [0, 3, 0], [0, 3, -20], [0, 2, -20]]],
+                [[[0, 4, 0], [-5, 4, 0], [-5, 5, 0], [0, 5, 0]], [[0, 4, 0], [0, 5, 0], [0, 5, -20], [0, 4, -20]]],
+                [[[0, 6, 0], [-5, 6, 0], [-5, 7, 0], [0, 7, 0]], [[0, 6, 0], [0, 7, 0], [0, 7, -20], [0, 6, -20]]],
+                [[[0, 8, 0], [-5, 8, 0], [-5, 9, 0], [0, 9, 0]], [[0, 8, 0], [0, 9, 0], [0, 9, -20], [0, 8, -20]]],
+                [[[0, 10, 0], [-5, 10, 0], [-5, 11, 0], [0, 11, 0]], [[0, 10, 0], [0, 11, 0], [0, 11, -20], [0, 10, -20]]],
+                [[[0, 12, 0], [-5, 12, 0], [-5, 13, 0], [0, 13, 0]], [[0, 12, 0], [0, 13, 0], [0, 13, -20], [0, 12, -20]]],
+                [[[0, 16, 0], [-20, 16, 0], [-20, 17, 0], [0, 17, 0]], [[0, 16, 0], [0, 17, 0], [0, 17, -5], [0, 16, -5]]],
+                [[[0, 18, 0], [-20, 18, 0], [-20, 19, 0], [0, 19, 0]], [[0, 18, 0], [0, 19, 0], [0, 19, -5], [0, 18, -5]]],
+                [[[0, 20, 0], [-20, 20, 0], [-20, 21, 0], [0, 21, 0]], [[0, 20, 0], [0, 21, 0], [0, 21, -5], [0, 20, -5]]],
+                [[[0, 22, 0], [-20, 22, 0], [-20, 23, 0], [0, 23, 0]], [[0, 22, 0], [0, 23, 0], [0, 23, -5], [0, 22, -5]]],
+                [[[0, 24, 0], [-20, 24, 0], [-20, 25, 0], [0, 25, 0]], [[0, 24, 0], [0, 25, 0], [0, 25, -5], [0, 24, -5]]],
+                [[[0, 26, 0], [-20, 26, 0], [-20, 27, 0], [0, 27, 0]], [[0, 26, 0], [0, 27, 0], [0, 27, -5], [0, 26, -5]]],
+                [[[0, 28, 0], [-20, 28, 0], [-20, 29, 0], [0, 29, 0]], [[0, 28, 0], [0, 29, 0], [0, 29, -5], [0, 28, -5]]]
+            ];
+
+            var PULSE_STRIPES = [2, 4, 6, 9, 11, 13]; // 1-indexed as given
+            var pulseSet = {};
+            PULSE_STRIPES.forEach(function (n) { pulseSet[n] = true; });
+
+            var scene = new THREE.Scene();
+            scene.background = null; // fully transparent — blends with hero section, no canvas box visible
+
+            var camera = new THREE.OrthographicCamera(-20, 20, 20, -20, 0.1, 1000);
+            var group = new THREE.Group();
+            scene.add(group);
+
+            var initSize = getSize();
+            var renderer = new THREE.WebGLRenderer({ canvas: canvasEl, antialias: true, alpha: true });
+            renderer.setSize(initSize.w, initSize.h, false);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+            renderer.setClearColor(0x000000, 0);
+
+            // ── base color for static stripes ──
+            var baseColor = new THREE.Color(0x8a6a3a);
+            var glowColor = new THREE.Color(0xffb84d);
+
+            // Build each stripe: 2 flat polygons (quads), each drawn as a line loop
+            // outline (matches the flat-2D-polygon spec) plus a translucent fill so
+            // the pulse reads clearly against the dark background.
+            var stripeMeshes = []; // { number, curves: [ {points: [Vector3...], length, cumLens} ], material, lineObjs: [] }
+
+            raw.forEach(function (polys, idx) {
+                var stripeNum = idx + 1;
+                var isPulse = !!pulseSet[stripeNum];
+
+                var stripeEntry = { number: stripeNum, isPulse: isPulse, segments: [] };
+
+                polys.forEach(function (poly) {
+                    var pts3 = poly.map(function (p) {
+                        return new THREE.Vector3(p[0], p[1], p[2]);
+                    });
+                    // close loop
+                    var closed = pts3.concat([pts3[0]]);
+
+                    // outline geometry
+                    var geo = new THREE.BufferGeometry().setFromPoints(closed);
+                    var lineColor = baseColor.clone();
+                    var mat = new THREE.LineBasicMaterial({ color: lineColor, transparent: true, opacity: isPulse ? 0.55 : 0.5 });
+                    var line = new THREE.Line(geo, mat);
+                    group.add(line);
+
+                    // subtle translucent fill for readability
+                    var fanGeo = new THREE.BufferGeometry();
+                    var positions = [];
+                    var center = new THREE.Vector3();
+                    pts3.forEach(function (p) { center.add(p); });
+                    center.divideScalar(pts3.length);
+                    for (var i = 0; i < pts3.length; i++) {
+                        var a = pts3[i];
+                        var b = pts3[(i + 1) % pts3.length];
+                        positions.push(center.x, center.y, center.z, a.x, a.y, a.z, b.x, b.y, b.z);
+                    }
+                    fanGeo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+                    fanGeo.computeVertexNormals();
+                    var fillMat = new THREE.MeshBasicMaterial({
+                        color: baseColor,
+                        transparent: true,
+                        opacity: isPulse ? 0.14 : 0.12,
+                        side: THREE.DoubleSide,
+                        depthWrite: false
+                    });
+                    var fillMesh = new THREE.Mesh(fanGeo, fillMat);
+                    group.add(fillMesh);
+
+                    if (isPulse) {
+                        var cum = [0];
+                        for (var j = 0; j < pts3.length; j++) {
+                            var pA = pts3[j];
+                            var pB = pts3[(j + 1) % pts3.length];
+                            cum.push(cum[cum.length - 1] + pA.distanceTo(pB));
+                        }
+                        stripeEntry.segments.push({ points: closed, cumLens: cum, totalLen: cum[cum.length - 1] });
+                    }
+                });
+
+                if (isPulse) {
+                    var totalLen = 0;
+                    stripeEntry.segments.forEach(function (s) { totalLen += s.totalLen; });
+                    stripeEntry.totalLen = totalLen;
+
+                    stripeEntry.segments.forEach(function (s) {
+                        var firstY = s.points[0].y;
+                        var lastPeakY = s.points[Math.floor(s.points.length / 2)].y;
+                        if (firstY > lastPeakY) {
+                            s.points = s.points.slice().reverse();
+                            var cum2 = [0];
+                            for (var k = 0; k < s.points.length - 1; k++) {
+                                cum2.push(cum2[cum2.length - 1] + s.points[k].distanceTo(s.points[k + 1]));
+                            }
+                            s.cumLens = cum2;
+                            s.totalLen = cum2[cum2.length - 1];
+                        }
+                    });
+
+                    stripeMeshes.push(stripeEntry);
+                }
+            });
+
+            function pointAtDistance(seg, d) {
+                var pts = seg.points, cum = seg.cumLens;
+                d = Math.max(0, Math.min(d, seg.totalLen));
+                for (var i = 0; i < cum.length - 1; i++) {
+                    if (d >= cum[i] && d <= cum[i + 1]) {
+                        var t = (cum[i + 1] - cum[i]) > 0 ? (d - cum[i]) / (cum[i + 1] - cum[i]) : 0;
+                        return pts[i].clone().lerp(pts[i + 1], t);
+                    }
+                }
+                return pts[pts.length - 1].clone();
+            }
+
+            // ── camera framing ──
+            var bbox = new THREE.Box3();
+            group.updateMatrixWorld(true);
+            raw.forEach(function (polys) {
+                polys.forEach(function (poly) {
+                    poly.forEach(function (p) {
+                        bbox.expandByPoint(new THREE.Vector3(p[0], p[1], p[2]));
+                    });
+                });
+            });
+            var bcenter = new THREE.Vector3();
+            bbox.getCenter(bcenter);
+            var bsize = new THREE.Vector3();
+            bbox.getSize(bsize);
+            var maxDim = Math.max(bsize.x, bsize.y, bsize.z);
+
+            function makeGlowTexture(hexColor) {
+                var size = 128;
+                var c = document.createElement('canvas');
+                c.width = c.height = size;
+                var ctx = c.getContext('2d');
+                var grad = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+                grad.addColorStop(0.0, 'rgba(255,255,255,1)');
+                grad.addColorStop(0.25, hexColor + 'ff');
+                grad.addColorStop(0.6, hexColor + '55');
+                grad.addColorStop(1.0, hexColor + '00');
+                ctx.fillStyle = grad;
+                ctx.fillRect(0, 0, size, size);
+                var tex = new THREE.CanvasTexture(c);
+                tex.needsUpdate = true;
+                return tex;
+            }
+
+            var coreTexture = makeGlowTexture('#fff4e0');
+            var haloTexture = makeGlowTexture('#ffb84d');
+            var trailTexture = makeGlowTexture('#ff9d2e');
+
+            function makeGlowSprite(texture, size, opacity) {
+                var mat = new THREE.SpriteMaterial({
+                    map: texture,
+                    transparent: true,
+                    opacity: opacity,
+                    blending: THREE.AdditiveBlending,
+                    depthWrite: false
+                });
+                var sprite = new THREE.Sprite(mat);
+                sprite.scale.set(size, size, 1);
+                group.add(sprite);
+                return sprite;
+            }
+
+            var CORE_PCT = 0.012;
+            var HALO_PCT = 0.02;
+            var TRAIL_LEN = 55;
+            var TRAIL_START_PCT = 0.016;
+            var TRAIL_END_PCT = 0.003;
+            var TRAIL_SPACING = 0.2;
+            var TRAIL_FADE_POWER = 0.8;
+
+            var CORE_SIZE = maxDim * CORE_PCT;
+            var HALO_SIZE = maxDim * HALO_PCT;
+            var TRAIL_SIZE_START = maxDim * TRAIL_START_PCT;
+            var TRAIL_SIZE_END = maxDim * TRAIL_END_PCT;
+
+            var pulses = stripeMeshes.map(function (entry, i) {
+                var core = makeGlowSprite(coreTexture, CORE_SIZE, 0.8);
+                var coreHalo = makeGlowSprite(haloTexture, HALO_SIZE, 0.35);
+
+                var trailSegs = [];
+                for (var s = 0; s < TRAIL_LEN; s++) {
+                    trailSegs.push(makeGlowSprite(trailTexture, TRAIL_SIZE_START, 0));
+                }
+
+                return {
+                    entry: entry,
+                    core: core,
+                    coreHalo: coreHalo,
+                    trailSegs: trailSegs,
+                    phaseOffset: (i / stripeMeshes.length) * 1.0,
+                    speed: 11 + (i % 3) * 1.6,
+                    flickerSeed: Math.random() * 100
+                };
+            });
+
+            function findSegmentDistance(entry, totalTravelled) {
+                var d = totalTravelled % entry.totalLen;
+                var acc = 0;
+                for (var s = 0; s < entry.segments.length; s++) {
+                    var seg = entry.segments[s];
+                    if (d <= acc + seg.totalLen) {
+                        return { seg: seg, localD: d - acc };
+                    }
+                    acc += seg.totalLen;
+                }
+                var last = entry.segments[entry.segments.length - 1];
+                return { seg: last, localD: last.totalLen };
+            }
+
+            var viewDistance = maxDim * 3;
+            camera.position.set(bcenter.x + viewDistance, bcenter.y - viewDistance, bcenter.z + viewDistance);
+            camera.up.set(0, 0, 1);
+            camera.lookAt(bcenter);
+
+            // FRUSTUM_PAD controls headroom around the logo — raised from 0.62 to 0.72
+            // because the logo's projected bounding box (after the isometric camera
+            // rotation) is taller than the raw bbox half-height, which was clipping
+            // the top/bottom tips of the stripes at the frame edges.
+            var FRUSTUM_PAD = 0.72;
+            function updateCameraFrustum(w, h) {
+                var aspect = w / h;
+                // Fit BOTH axes: half-extent must cover maxDim*FRUSTUM_PAD in whichever
+                // dimension is tighter, so a narrow/tall or wide/short container never
+                // crops the logo.
+                var half = maxDim * FRUSTUM_PAD;
+                var halfW, halfH;
+                if (aspect >= 1) {
+                    halfH = half;
+                    halfW = half * aspect;
+                } else {
+                    halfW = half;
+                    halfH = half / aspect;
+                }
+                camera.left = -halfW;
+                camera.right = halfW;
+                camera.top = halfH;
+                camera.bottom = -halfH;
+                camera.updateProjectionMatrix();
+            }
+            updateCameraFrustum(initSize.w, initSize.h);
+
+            function onContainerResize() {
+                var s = getSize();
+                renderer.setSize(s.w, s.h, false);
+                updateCameraFrustum(s.w, s.h);
+            }
+
+            if (typeof ResizeObserver !== 'undefined') {
+                var ro = new ResizeObserver(onContainerResize);
+                ro.observe(container);
+            } else {
+                window.addEventListener('resize', onContainerResize);
+            }
+
+            var clock = new THREE.Clock();
+            var rafId = null;
+
+            function animate() {
+                rafId = requestAnimationFrame(animate);
+                var t = clock.getElapsedTime();
+
+                pulses.forEach(function (p) {
+                    var entry = p.entry;
+                    var travelled = (t * p.speed + p.phaseOffset * entry.totalLen);
+                    var found = findSegmentDistance(entry, travelled);
+                    var headPos = pointAtDistance(found.seg, found.localD);
+
+                    var flicker = 0.85 + 0.15 * Math.sin(t * 47 + p.flickerSeed) +
+                        0.06 * Math.sin(t * 113 + p.flickerSeed * 3);
+                    flicker = Math.max(0.7, Math.min(1.15, flicker));
+
+                    p.core.position.copy(headPos);
+                    p.core.material.opacity = 0.85 * Math.min(1, flicker);
+
+                    p.coreHalo.position.copy(headPos);
+                    p.coreHalo.material.opacity = 0.4 * flicker;
+
+                    for (var k = 0; k < TRAIL_LEN; k++) {
+                        var back = (k + 1) * TRAIL_SPACING;
+                        var td = travelled - back;
+                        var f2 = findSegmentDistance(entry, ((td % entry.totalLen) + entry.totalLen) % entry.totalLen);
+                        var pos = pointAtDistance(f2.seg, f2.localD);
+
+                        var seg = p.trailSegs[k];
+                        seg.position.copy(pos);
+
+                        var frac = k / TRAIL_LEN;
+                        var size = TRAIL_SIZE_START + (TRAIL_SIZE_END - TRAIL_SIZE_START) * frac;
+                        seg.scale.set(size, size, 1);
+
+                        var falloff = Math.pow(1 - frac, TRAIL_FADE_POWER);
+                        seg.material.opacity = 0.5 * falloff * flicker;
+                    }
+                });
+
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            // Pause the animation loop when the section scrolls off-screen to save GPU/CPU.
+            if (typeof IntersectionObserver !== 'undefined') {
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) {
+                        if (e.isIntersecting && rafId === null) {
+                            animate();
+                        } else if (!e.isIntersecting && rafId !== null) {
+                            cancelAnimationFrame(rafId);
+                            rafId = null;
+                        }
+                    });
+                }, { threshold: 0.01 });
+                io.observe(container);
+            }
+        })();
+    </script>
+</body>
+</html>
