@@ -1,0 +1,588 @@
+/* ============================================================
+   blog.css — Phorge.AI Blog / Insights page
+   Extends styles.css (nav, footer, buttons, tokens). Layout
+   language borrows Raycast's blog (category pills, vertical
+   post list, featured-first hierarchy, avatar + date meta row)
+   reworked in Phorge's dark-gold, bordered-card visual system.
+   ============================================================ */
+
+/* ── Page hero ── */
+.blog-hero {
+    position: relative;
+    padding: 160px 0 64px;
+    overflow: hidden;
+}
+
+.blog-hero::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    left: -10%;
+    width: 60%;
+    height: 120%;
+    background: radial-gradient(ellipse at center, rgba(222, 186, 138, 0.08) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.blog-hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+}
+
+.blog-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    margin-bottom: 28px;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--Phorge-Gold);
+}
+
+.blog-eyebrow .dot {
+    width: 6px;
+    height: 6px;
+    background: var(--Phorge-Gold);
+    border-radius: 50%;
+}
+
+.blog-hero-title {
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 200;
+    color: var(--Phorge-Lgray);
+    margin-bottom: 20px;
+    letter-spacing: 0.01em;
+}
+
+.blog-hero-title .gold {
+    color: var(--Phorge-Gold);
+    font-style: italic;
+}
+
+.blog-hero-desc {
+    font-size: 17px;
+    color: var(--Phorge-Gold);
+    max-width: 540px;
+    line-height: 1.8;
+}
+
+/* ── Category filter bar ──
+   NOT sticky/fixed: the page's only fixed header is .nav (shared with the
+   homepage, unmodified here) so its height and scroll-shrink behavior stay
+   identical to every other page. Stacking this bar's own sticky context
+   directly under a shrinking fixed nav was what made the combined header
+   read as "taller than the homepage" — this scrolls away normally instead. */
+.blog-filters-wrap {
+    position: relative;
+    z-index: 10;
+    background: rgba(15, 14, 12, 0.92);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.blog-filters {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 18px 0;
+    flex-wrap: wrap;
+}
+
+.blog-filter-pills {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-pill {
+    padding: 10px 22px;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-family: "Nimbus Sans", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.filter-pill:hover {
+    border-color: var(--Phorge-Gold);
+    color: var(--Phorge-Gold);
+}
+
+.filter-pill.active {
+    background: var(--Phorge-Gold);
+    border-color: var(--Phorge-Gold);
+    color: var(--Phorge-Dgray);
+}
+
+.blog-rss {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+    padding: 10px 18px;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.blog-rss:hover {
+    color: var(--Phorge-Gold);
+    border-color: var(--Phorge-Gold);
+}
+
+.blog-rss svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* ── Featured post ── */
+.blog-featured-section {
+    padding: 72px 0 40px;
+}
+
+.featured-post {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 48px;
+    align-items: stretch;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 8px;
+    position: relative;
+    transition: border-color 0.4s ease;
+}
+
+.featured-post::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 40px;
+    right: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--Phorge-Gold), transparent);
+}
+
+.featured-post:hover {
+    border-color: var(--Phorge-Gold);
+}
+
+/* ── Featured media: shimmering card with the Phorge lockup centered ──
+   Shimmer technique adapted from a CSS skeleton-loader pattern (a soft
+   diagonal band of light sweeping across the card) — used purely as a
+   decorative, ambient motion behind a static, centered logo, not as an
+   actual loading state. */
+.featured-media {
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    background: linear-gradient(160deg, #221c12 0%, #12110f 100%);
+    box-shadow: 0 10px 45px rgba(0, 0, 0, 0.35);
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.featured-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(222, 186, 138, 0.14) 0%, transparent 65%);
+    pointer-events: none;
+}
+
+/* Diagonal shimmer sweep */
+.featured-media::before {
+    content: '';
+    position: absolute;
+    inset: -20% -60%;
+    z-index: 1;
+    background: linear-gradient(100deg,
+            transparent 35%,
+            rgba(222, 186, 138, 0.16) 48%,
+            rgba(255, 244, 224, 0.22) 50%,
+            rgba(222, 186, 138, 0.16) 52%,
+            transparent 65%);
+    background-size: 60% 100%;
+    background-repeat: no-repeat;
+    background-position: -80% 0;
+    animation: featuredShimmer 3.6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes featuredShimmer {
+    to {
+        background-position: 180% 0;
+    }
+}
+
+.featured-logo-mark {
+    position: relative;
+    z-index: 2;
+    width: 58%;
+    max-width: 260px;
+    height: auto;
+    filter: drop-shadow(0 0 28px rgba(222, 186, 138, 0.22));
+}
+
+.featured-tag {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 2;
+    padding: 6px 14px;
+    background: rgba(15, 14, 12, 0.85);
+    border: 1px solid var(--Phorge-Gold);
+    color: var(--Phorge-Gold);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    backdrop-filter: blur(6px);
+}
+
+.featured-body {
+    padding: 40px 40px 40px 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.featured-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+}
+
+.featured-title {
+    font-family: "Nimbus Sans", serif;
+    font-size: clamp(24px, 3vw, 34px);
+    font-weight: 400;
+    color: var(--Phorge-Lgray);
+    line-height: 1.25;
+    margin-bottom: 18px;
+    transition: color 0.3s ease;
+}
+
+.featured-post:hover .featured-title {
+    color: var(--Phorge-Gold);
+}
+
+.featured-excerpt {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 28px;
+}
+
+.post-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.post-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--Phorge-Dgray);
+    border: 1px solid var(--Phorge-Gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Nimbus Sans", serif;
+    font-size: 13px;
+    color: var(--Phorge-Gold);
+    flex-shrink: 0;
+}
+
+.post-meta-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.post-author {
+    font-size: 13px;
+    color: var(--Phorge-Lgray);
+    letter-spacing: 0.02em;
+}
+
+.post-meta-sub {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.post-meta-sub .sep {
+    opacity: 0.5;
+}
+
+/* ── Post list ── */
+.blog-list-section {
+    padding: 20px 0 120px;
+}
+
+.blog-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-row {
+    display: grid;
+    grid-template-columns: 220px 1fr auto;
+    gap: 36px;
+    align-items: center;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.post-row:first-child {
+    padding-top: 0;
+}
+
+.post-row:hover {
+    padding-left: 12px;
+}
+
+.post-row:hover .post-title {
+    color: var(--Phorge-Gold);
+}
+
+.post-thumb {
+    aspect-ratio: 16 / 11;
+    background: linear-gradient(160deg, #1F1D1A 0%, #151412 100%);
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.post-row:hover .post-thumb {
+    border-color: var(--Phorge-Gold);
+}
+
+.post-thumb svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.post-thumb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(184, 134, 11, 0.1) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.post-main {
+    min-width: 0;
+}
+
+.post-category {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--Phorge-Gold);
+    border: 1px solid rgba(222, 186, 138, 0.35);
+    padding: 4px 10px;
+    margin-bottom: 14px;
+}
+
+.post-title {
+    font-family: "Nimbus Sans", serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--Phorge-Lgray);
+    line-height: 1.35;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.post-excerpt {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 560px;
+}
+
+.post-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 16px;
+    text-align: right;
+}
+
+.post-date {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.post-arrow {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--Phorge-Gold);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.post-row:hover .post-arrow {
+    background: var(--Phorge-Gold);
+    border-color: var(--Phorge-Gold);
+    color: var(--Phorge-Dgray);
+    transform: rotate(45deg);
+}
+
+.post-arrow svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ── Load more ── */
+.blog-load-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 56px;
+}
+
+/* ── Newsletter CTA (mirrors .cta section language) ── */
+.blog-newsletter {
+    position: relative;
+    background: linear-gradient(135deg, rgba(184, 134, 11, 0.1) 0%, transparent 50%);
+    border-top: 1px solid var(--border-color);
+}
+
+.newsletter-inner {
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+.newsletter-title {
+    font-size: clamp(24px, 4vw, 38px);
+    font-weight: 200;
+    color: var(--Phorge-Lgray);
+    margin-bottom: 16px;
+}
+
+.newsletter-title .gold {
+    color: var(--Phorge-Gold);
+    font-style: italic;
+}
+
+.newsletter-desc {
+    font-size: 16px;
+    color: var(--Phorge-Gold);
+    margin-bottom: 36px;
+    line-height: 1.8;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 12px;
+    max-width: 440px;
+    margin: 0 auto;
+}
+
+.newsletter-form .form-input {
+    flex: 1;
+}
+
+/* ── Responsive ── */
+@media (max-width: 992px) {
+    .featured-post {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-media {
+        min-height: 240px;
+    }
+
+    .featured-body {
+        padding: 32px;
+    }
+
+    .post-row {
+        grid-template-columns: 140px 1fr;
+    }
+
+    .post-side {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .blog-hero {
+        padding: 120px 0 48px;
+    }
+
+    .blog-filters {
+        justify-content: flex-start;
+    }
+
+    .blog-rss {
+        display: none;
+    }
+
+    .post-row {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 28px 0;
+    }
+
+    .post-thumb {
+        aspect-ratio: 16 / 9;
+    }
+
+    .post-side {
+        grid-column: auto;
+        margin-top: 0;
+    }
+
+    .featured-body {
+        padding: 28px;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+    }
+}
