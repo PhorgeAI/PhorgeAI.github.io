@@ -1793,7 +1793,7 @@
                 cx = W / 2;
                 cy = H / 2;
                 const padding = 0.82;
-                scale = padding * Math.min(W / boundsSpanX, H / boundsSpanY);
+                scale = (W > 0 && H > 0) ? padding * Math.min(W / boundsSpanX, H / boundsSpanY) : 0;
             }
 
             function toScreen(p) {
@@ -1966,9 +1966,24 @@
 
             window.addEventListener('resize', resize);
 
-            buildCurve();
-            initParticles();
-            requestAnimationFrame(frameLoop);
+            // The frame's height comes from `aspect-ratio: 1/1` on its width, and this
+            // script runs inline at the end of <body> — the browser hasn't necessarily
+            // finished layout yet, so canvas.clientWidth/clientHeight can still read 0
+            // here. Building the curve against a 0-sized canvas makes `scale` blow up
+            // to Infinity, throwing every point off-screen — nothing ever draws, even
+            // though the loop keeps running. Wait for real layout (rAF is enough; retry
+            // once more if a frame still reports 0, e.g. while the tab is hidden) before
+            // the first buildCurve().
+            function start() {
+                if (canvas.clientWidth === 0 || canvas.clientHeight === 0) {
+                    requestAnimationFrame(start);
+                    return;
+                }
+                buildCurve();
+                initParticles();
+                requestAnimationFrame(frameLoop);
+            }
+            requestAnimationFrame(start);
         })();
     </script>
 

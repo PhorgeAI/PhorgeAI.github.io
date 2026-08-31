@@ -83,6 +83,21 @@ body {
 	line-height: 1.7;
 	font-weight: 400;
 	overflow-x: hidden;
+	scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none; /* IE/Edge legacy */
+}
+
+/* Hide scrollbar (page still scrolls normally) */
+html {
+	scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none; /* IE/Edge legacy */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+	display: none; /* Chrome, Safari, Edge (Chromium) */
+	width: 0;
+	height: 0;
 }
 
 /* Noise texture overlay */

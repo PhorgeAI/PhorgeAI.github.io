@@ -7,13 +7,32 @@
 
 // Navigation scroll effect
 const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
+
+// Both scroll handlers below used to run their DOM reads/writes directly
+// inside the 'scroll' event callback. The browser fires 'scroll' far more
+// often than it paints (sometimes many times per animation frame), so every
+// extra listener doing class toggles and offsetTop/offsetHeight reads in
+// there adds up to visible jank and a "sticky" feel while scrolling — each
+// event forces layout work outside the browser's own paint cadence. Coalescing
+// both into a single rAF-scheduled update makes them run at most once per
+// rendered frame, which is all that's ever visible anyway.
+let scrollScheduled = false;
+function onScrollFrame() {
+    scrollScheduled = false;
     if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
     } else {
         navbar.classList.remove('scrolled');
     }
-});
+    highlightNavOnScroll();
+}
+function requestScrollUpdate() {
+    if (!scrollScheduled) {
+        scrollScheduled = true;
+        requestAnimationFrame(onScrollFrame);
+    }
+}
+window.addEventListener('scroll', requestScrollUpdate, { passive: true });
 
 // Mobile Menu
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -58,7 +77,7 @@ document.addEventListener('keydown', (e) => {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
-        // Guard against bare "#" placeholder links — document.querySelector('#')
+        // Guard against bare "#" placeholder links ? document.querySelector('#')
         // throws (invalid selector), which would silently kill this handler.
         if (!href || href === '#') return;
         e.preventDefault();
@@ -109,7 +128,7 @@ function highlightNavOnScroll() {
     }
 }
 
-window.addEventListener('scroll', highlightNavOnScroll);
+// (called from the rAF-batched requestScrollUpdate() above, not its own listener)
 
 // Product tabs
 const tabBtns = document.querySelectorAll('.tab-btn');
