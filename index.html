@@ -1091,20 +1091,11 @@
         </div>
     </section>
 
-    <!-- World Map Section -->
-    <section class="worldmap-section">
-        <div class="map-grid"></div>
-        <script>
-            (function () {
-                const container = document.querySelector('.worldmap-section .map-grid');
-                for (let i = 0; i < 1925; i++) {
-                    const div = document.createElement('div');
-                    div.classList.add('cell');
-                    container.appendChild(div);
-                }
-            })();
-        </script>
-    </section>
+    <!-- Phorge logo — electric pulse animation (canvas 2D) -->
+    <!-- Mathematical curve animation — belongs here, below Contact Us -->
+    <div id="phorge-curve-frame" style="position:relative; width:100%; max-width:420px; aspect-ratio:1/1; margin:0 auto;">
+        <canvas id="phorge-curve-canvas" style="position:absolute; inset:0; width:100%; height:100%; display:block; background:transparent;"></canvas>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -1744,5 +1735,243 @@
             }
         })();
     </script>
+
+    <script>
+        (function () {
+            const frame = document.getElementById('phorge-curve-frame');
+            const canvas = document.getElementById('phorge-curve-canvas');
+            const ctx = canvas.getContext('2d');
+
+            /* ---------- palette — pulled from styles.css ----------
+               --Phorge-Gold: #DEBA8A   --gold-light: #D4A84B
+               --gold-accent: #C9A227   --gold-dark:  #8B6914          */
+            const GOLD_VARIANTS = [
+                [222, 186, 138],  // Phorge-Gold
+                [212, 168, 75],   // gold-light
+                [201, 162, 39],   // gold-accent
+                [139, 105, 20]    // gold-dark (used sparingly, dimmer)
+            ];
+            const COLOR_TRACK = 'rgba(222, 186, 138, 0.14)';
+
+            let W, H, cx, cy, scale;
+            let curvePoints = [];
+            let boundsMidX = 0, boundsMidY = 0, boundsSpanX = 1, boundsSpanY = 1;
+
+            /* ---------- build the curve: r = 2.5cos(1.2θ) + 0.5cos(6θ), 0 ≤ θ ≤ 10π ---------- */
+            function buildCurve() {
+                curvePoints = [];
+                const steps = 6000;
+                const thetaMax = 10 * Math.PI;
+                let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+
+                for (let i = 0; i <= steps; i++) {
+                    const theta = (i / steps) * thetaMax;
+                    const r = 2.5 * Math.cos(1.2 * theta) + 0.5 * Math.cos(6 * theta);
+                    const x = r * Math.cos(theta);
+                    const y = r * Math.sin(theta);
+                    curvePoints.push({ x, y });
+                    if (x < minX) minX = x;
+                    if (x > maxX) maxX = x;
+                    if (y < minY) minY = y;
+                    if (y > maxY) maxY = y;
+                }
+
+                boundsSpanX = maxX - minX;
+                boundsSpanY = maxY - minY;
+                boundsMidX = (minX + maxX) / 2;
+                boundsMidY = (minY + maxY) / 2;
+                resize();
+            }
+
+            function resize() {
+                const dpr = Math.max(1, window.devicePixelRatio || 1);
+                W = canvas.clientWidth;
+                H = canvas.clientHeight;
+                canvas.width = W * dpr;
+                canvas.height = H * dpr;
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                cx = W / 2;
+                cy = H / 2;
+                const padding = 0.82;
+                scale = padding * Math.min(W / boundsSpanX, H / boundsSpanY);
+            }
+
+            function toScreen(p) {
+                return {
+                    x: cx + (p.x - boundsMidX) * scale,
+                    y: cy + (p.y - boundsMidY) * scale
+                };
+            }
+
+            function drawTrack() {
+                ctx.save();
+                ctx.strokeStyle = COLOR_TRACK;
+                ctx.lineWidth = 1.3;
+                ctx.lineJoin = 'round';
+                ctx.beginPath();
+                for (let i = 0; i < curvePoints.length; i++) {
+                    const s = toScreen(curvePoints[i]);
+                    if (i === 0) ctx.moveTo(s.x, s.y);
+                    else ctx.lineTo(s.x, s.y);
+                }
+                ctx.stroke();
+                ctx.restore();
+            }
+
+            /* ---------- particles ----------
+               Each particle has an independent random lifetime: it fades in,
+               travels, fades out, then respawns elsewhere on the curve after a
+               random pause. Speeds, start points, lifespans, and colors are all
+               randomized per-particle so nothing lines up or repeats visibly. */
+            const PARTICLE_COUNT = 10;
+            const TRAIL_SECONDS = 0.85;   // how far back (in time) the tail reaches
+            const n = () => curvePoints.length;
+
+            function rand(min, max) { return min + Math.random() * (max - min); }
+            function pickColor() { return GOLD_VARIANTS[Math.floor(Math.random() * GOLD_VARIANTS.length)]; }
+
+            function spawn(p, initialAgeOffset) {
+                p.pos = rand(0, n());
+                p.speed = n() * rand(0.035, 0.085);          // points per second
+                p.lifespan = rand(4.5, 9);
+                p.fadeIn = rand(0.6, 1.1);
+                p.fadeOut = rand(0.9, 1.6);
+                p.color = pickColor();
+                p.peakAlpha = rand(0.75, 1);
+                p.age = initialAgeOffset !== undefined ? initialAgeOffset : -rand(0, 3); // negative = waiting to appear
+                p.trail = []; // { x, y, t } in curve space, t = timestamp
+                p.waitAfterDeath = 0;
+            }
+
+            const particles = [];
+            function initParticles() {
+                particles.length = 0;
+                for (let i = 0; i < PARTICLE_COUNT; i++) {
+                    const p = {};
+                    // Stagger initial ages so particles are already mid-cycle at different
+                    // points when the animation starts, instead of all beginning in sync.
+                    spawn(p, rand(-4, 6));
+                    particles.push(p);
+                }
+            }
+
+            function envelope(p) {
+                if (p.age < 0) return 0;
+                if (p.age < p.fadeIn) return (p.age / p.fadeIn) * p.peakAlpha;
+                if (p.age > p.lifespan - p.fadeOut) {
+                    const t = (p.lifespan - p.age) / p.fadeOut;
+                    return Math.max(0, t) * p.peakAlpha;
+                }
+                return p.peakAlpha;
+            }
+
+            function stepParticle(p, dt, nowT) {
+                p.age += dt;
+
+                if (p.age >= p.lifespan) {
+                    // dead — wait a random beat, then respawn elsewhere
+                    p.waitAfterDeath -= dt;
+                    if (p.waitAfterDeath <= 0 && p.trail.length === 0) {
+                        spawn(p, 0);
+                    } else if (p.trail.length > 0) {
+                        // let the existing trail continue fading out even though the
+                        // particle itself has "died", so the tail doesn't just vanish
+                        p.waitAfterDeath = p.waitAfterDeath || rand(0.8, 2.5);
+                    }
+                }
+
+                const alpha = envelope(p);
+
+                if (p.age >= 0 && p.age < p.lifespan) {
+                    p.pos += p.speed * dt;
+                    if (p.pos >= n()) p.pos -= n();
+                    const idx = Math.floor(p.pos);
+                    p.trail.push({ x: curvePoints[idx].x, y: curvePoints[idx].y, t: nowT });
+                }
+
+                // trim trail to the time window, and drop it once fully invisible
+                const cutoff = nowT - TRAIL_SECONDS;
+                while (p.trail.length && p.trail[0].t < cutoff) p.trail.shift();
+                if (alpha <= 0.001) p.trail.length = 0;
+
+                return alpha;
+            }
+
+            function drawParticle(p, alpha) {
+                if (alpha <= 0.001 || p.trail.length < 2) return;
+                const [r, g, b] = p.color;
+                const len = p.trail.length;
+
+                ctx.save();
+                ctx.globalCompositeOperation = 'lighter';
+
+                // Tapered ribbon instead of stroked segments: adjacent quads share an
+                // edge exactly, so there are no round-cap seams to bulge into beads —
+                // the previous "lumps" were caused by each tiny segment being stroked
+                // separately with its own round line-cap.
+                const proj = p.trail.map(toScreen);
+                for (let i = 1; i < len; i++) {
+                    const t0 = (i - 1) / (len - 1);
+                    const t1 = i / (len - 1);
+                    const w0 = 0.6 + t0 * 2.2;
+                    const w1 = 0.6 + t1 * 2.2;
+                    const a0 = Math.pow(t0, 2.0) * alpha * 0.9;
+                    const a1 = Math.pow(t1, 2.0) * alpha * 0.9;
+                    const segAlpha = (a0 + a1) / 2;
+
+                    const p0 = proj[i - 1], p1 = proj[i];
+                    const dx = p1.x - p0.x, dy = p1.y - p0.y;
+                    const d = Math.hypot(dx, dy) || 1;
+                    const nx = -dy / d, ny = dx / d;
+
+                    ctx.beginPath();
+                    ctx.moveTo(p0.x + nx * w0 / 2, p0.y + ny * w0 / 2);
+                    ctx.lineTo(p1.x + nx * w1 / 2, p1.y + ny * w1 / 2);
+                    ctx.lineTo(p1.x - nx * w1 / 2, p1.y - ny * w1 / 2);
+                    ctx.lineTo(p0.x - nx * w0 / 2, p0.y - ny * w0 / 2);
+                    ctx.closePath();
+                    ctx.fillStyle = `rgba(${r},${g},${b},${segAlpha})`;
+                    ctx.fill();
+                }
+
+                // bright glowing head
+                const head = toScreen(p.trail[len - 1]);
+                ctx.shadowColor = `rgba(${r},${g},${b},${alpha})`;
+                ctx.shadowBlur = 13;
+                ctx.beginPath();
+                ctx.fillStyle = `rgba(${Math.min(255, r + 25)},${Math.min(255, g + 25)},${Math.min(255, b + 15)},${alpha})`;
+                ctx.arc(head.x, head.y, 2.4, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.restore();
+            }
+
+            let lastTime = null;
+            function frameLoop(now) {
+                if (lastTime === null) lastTime = now;
+                const dt = Math.min(0.05, (now - lastTime) / 1000);
+                lastTime = now;
+                const nowT = now / 1000;
+
+                ctx.clearRect(0, 0, W, H);
+                drawTrack();
+
+                for (const p of particles) {
+                    const alpha = stepParticle(p, dt, nowT);
+                    drawParticle(p, alpha);
+                }
+
+                requestAnimationFrame(frameLoop);
+            }
+
+            window.addEventListener('resize', resize);
+
+            buildCurve();
+            initParticles();
+            requestAnimationFrame(frameLoop);
+        })();
+    </script>
+
+
 </body>
 </html>
